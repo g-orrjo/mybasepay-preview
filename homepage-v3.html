@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>myBasePay  - Your Workforce. Fully Managed.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: #121631;
+  background: #fff;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+
+/* ===== GRAPH PATTERN ===== */
+.graph-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='20' y1='16' x2='20' y2='24' stroke='%23e8e8e8' stroke-width='1'/%3E%3Cline x1='16' y1='20' x2='24' y2='20' stroke='%23e8e8e8' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 40px 40px;
+}
+.graph-pattern-green {
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='20' y1='16' x2='20' y2='24' stroke='%23006633' stroke-width='1' opacity='0.18'/%3E%3Cline x1='16' y1='20' x2='24' y2='20' stroke='%23006633' stroke-width='1' opacity='0.18'/%3E%3C/svg%3E");
+  background-size: 40px 40px;
+}
+
+/* ===== BRAND SHAPE ===== */
+.brand-shape {
+  position: absolute;
+  background: #006633;
+  border-radius: 12px;
+  z-index: 0;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 40px;
+  border-radius: 100px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.2s, background 0.25s ease, border-color 0.25s ease;
+  border: 2px solid transparent;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+}
+.btn-marigold {
+  background: #ffbf00;
+  color: #121631;
+  border-color: #ffbf00;
+}
+.btn-marigold:hover {
+  box-shadow: 0 8px 30px rgba(255, 191, 0, 0.35);
+}
+.btn-outline {
+  background: transparent;
+  border: 2px solid rgba(18, 22, 49, 0.2);
+  color: #121631;
+}
+.btn-outline:hover {
+  border-color: rgba(18, 22, 49, 0.5);
+  background: rgba(18, 22, 49, 0.03);
+}
+.btn-outline-white {
+  background: transparent;
+  border: 2px solid rgba(255,255,255,0.4);
+  color: #fff;
+}
+.btn-outline-white:hover {
+  border-color: #fff;
+  background: rgba(255,255,255,0.1);
+}
+.btn-gradient {
+  background: linear-gradient(135deg, #7393f9, #006633);
+  color: #fff;
+}
+.btn-white {
+  background: #fff;
+  color: #121631;
+}
+
+/* ===== EYEBROW ===== */
+.eyebrow {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #006633;
+  margin-bottom: 12px;
+}
+
+/* ===== SECTION HEADINGS ===== */
+.section-heading {
+  font-size: 42px;
+  font-weight: 900;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+.section-sub {
+  font-size: 18px;
+  line-height: 1.65;
+  color: #555;
+  max-width: 720px;
+}
+
+/* Utility bar removed  - logins now inline in header */
+
+/* ==========================================================
+   HEADER / NAV
+   ========================================================== */
+.main-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.main-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+.header-logo img {
+  height: 40px;
+}
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.main-nav a {
+  font-size: 15px;
+  font-weight: 500;
+  color: #121631;
+  transition: color 0.2s;
+}
+.main-nav a:hover { color: #006633; }
+.header-cta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-left: 28px;
+  border-left: 1px solid rgba(18,22,49,0.08);
+  margin-left: 24px;
+}
+.header-cta .btn.btn-marigold {
+  padding: 10px 22px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.header-login {
+  font-size: 12px;
+  color: rgba(18,22,49,0.45);
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.header-login:hover { color: #121631; }
+.header-login-sep {
+  color: rgba(18,22,49,0.15);
+  font-size: 12px;
+}
+.mobile-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 8px;
+}
+.mobile-toggle span {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background: #121631;
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* ==========================================================
+   HERO
+   ========================================================== */
+.hero {
+  background: linear-gradient(160deg, #e8effe 0%, #dde9fb 30%, #e2f0ee 60%, #eaf6e8 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 80px 0 100px;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='20' y1='16' x2='20' y2='24' stroke='%23506099' stroke-width='1' opacity='0.14'/%3E%3Cline x1='16' y1='20' x2='24' y2='20' stroke='%23506099' stroke-width='1' opacity='0.14'/%3E%3C/svg%3E");
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+.hero .container {
+  position: relative;
+  z-index: 1;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.hero-content h1 {
+  font-size: 56px;
+  font-weight: 900;
+  line-height: 1.08;
+  margin-bottom: 24px;
+}
+.hero-content h1 .gradient-text {
+  background: linear-gradient(135deg, #7393f9, #006633);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-content .hero-sub {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #333;
+  margin-bottom: 32px;
+  max-width: 520px;
+}
+.hero-ctas {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+.icp-cards {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+}
+.icp-card {
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  padding: 20px 24px;
+  flex: 1;
+  min-width: 200px;
+  border: 1px solid rgba(115,147,249,0.15);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.icp-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.icp-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+.icp-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: #006633;
+}
+.icp-card p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+}
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.hero-stat {
+  text-align: center;
+}
+.hero-stat .stat-number {
+  font-size: 32px;
+  font-weight: 900;
+  color: #006633;
+}
+.hero-stat .stat-label {
+  font-size: 13px;
+  color: #555;
+  font-weight: 500;
+  margin-top: 4px;
+}
+.hero-image-wrap {
+  position: relative;
+}
+.hero-image-wrap img {
+  position: relative;
+  z-index: 1;
+  border-radius: 16px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+}
+
+/* ==========================================================
+   TRUST BAR
+   ========================================================== */
+.trust-bar {
+  background: #f2f2f2;
+  padding: 40px 0;
+}
+.trust-bar-inner {
+  text-align: center;
+}
+.trust-bar-inner p {
+  font-size: 14px;
+  font-weight: 500;
+  color: #afafaf;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+.trust-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+.trust-logo {
+  font-size: 18px;
+  font-weight: 700;
+  color: #afafaf;
+  letter-spacing: 0.5px;
+}
+
+/* ==========================================================
+   SOLUTIONS
+   ========================================================== */
+.solutions {
+  background: #fff;
+  padding: 100px 0;
+}
+.solutions-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.solutions-header .section-sub {
+  margin: 0 auto;
+}
+.solutions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.solution-card {
+  border-radius: 16px;
+  padding: 40px 32px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  min-height: 380px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+.solution-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.18);
+}
+.solution-card.eor { background: linear-gradient(135deg, #7393f9, #006633); }
+.solution-card.aor { background: linear-gradient(135deg, #b7d4f7, #e7fcdb); color: #121631; }
+.solution-card.vor { background: linear-gradient(135deg, #e7fcdb, #b7d4f7, #ffbf00); color: #121631; }
+.solution-card .card-icon {
+  width: 56px;
+  height: 56px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+.solution-card .card-icon svg {
+  width: 26px;
+  height: 26px;
+}
+.solution-card.aor .card-icon,
+.solution-card.vor .card-icon {
+  background: rgba(0,102,51,0.1);
+}
+.solution-card h3 {
+  font-size: 24px;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+.solution-card .card-label {
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0.8;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.solution-card p {
+  font-size: 15px;
+  line-height: 1.7;
+  flex: 1;
+}
+.solution-card .card-link {
+  margin-top: 24px;
+  font-weight: 700;
+  font-size: 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.solution-card .card-link svg {
+  transition: transform 0.2s;
+}
+.solution-card .card-link:hover svg {
+  transform: translateX(4px);
+}
+
+/* ==========================================================
+   WHY MBP
+   ========================================================== */
+.why-mbp {
+  background: #fafffe;
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+.why-mbp::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='20' y1='16' x2='20' y2='24' stroke='%23e8e8e8' stroke-width='1'/%3E%3Cline x1='16' y1='20' x2='24' y2='20' stroke='%23e8e8e8' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 40px 40px;
+  pointer-events: none;
+  opacity: 0.7;
+}
+.why-mbp .container { position: relative; z-index: 1; }
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.why-image-wrap {
+  position: relative;
+}
+.why-image-wrap img {
+  position: relative;
+  z-index: 1;
+  border-radius: 16px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+}
+.why-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 36px;
+}
+.why-stat-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid #e8e8e8;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.why-stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+.why-stat-card .stat-number {
+  font-size: 28px;
+  font-weight: 900;
+  color: #006633;
+}
+.why-stat-card .stat-label {
+  font-size: 13px;
+  color: #777;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+/* ==========================================================
+   HOW IT WORKS
+   ========================================================== */
+.how-it-works {
+  background: #fff;
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+.how-it-works::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='20' y1='16' x2='20' y2='24' stroke='%23e8e8e8' stroke-width='1'/%3E%3Cline x1='16' y1='20' x2='24' y2='20' stroke='%23e8e8e8' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 40px 40px;
+  pointer-events: none;
+  opacity: 0.5;
+}
+.how-it-works .container { position: relative; z-index: 1; }
+.how-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+.how-header .section-sub { margin: 0 auto; }
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.step-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 40px 32px;
+  border: 1px solid #e8e8e8;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+.step-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.08);
+}
+.step-number {
+  font-size: 48px;
+  font-weight: 900;
+  background: linear-gradient(135deg, #7393f9, #006633);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
+}
+.step-icon {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #e7fcdb, #b7d4f7);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+.step-icon img {
+  width: 28px;
+  height: 28px;
+}
+.step-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.step-card p {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.65;
+}
+
+/* ==========================================================
+   TESTIMONIALS
+   ========================================================== */
+.testimonials {
+  background: #fafffe;
+  padding: 100px 0;
+}
+.testimonials-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.testimonial-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 48px;
+}
+.toggle-btn {
+  padding: 12px 32px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  border: 2px solid #e8e8e8;
+  background: #fff;
+  cursor: pointer;
+  color: #777;
+  transition: all 0.2s;
+}
+.toggle-btn:first-child { border-radius: 12px 0 0 12px; }
+.toggle-btn:last-child { border-radius: 0 12px 12px 0; }
+.toggle-btn.active {
+  background: #006633;
+  color: #fff;
+  border-color: #006633;
+}
+.testimonial-card {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 16px;
+  padding: 48px;
+  border: 2px solid transparent;
+  background-image: linear-gradient(#fff, #fff), linear-gradient(135deg, #7393f9, #006633);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+  display: none;
+}
+.testimonial-card.active { display: flex; gap: 36px; align-items: center; }
+.testimonial-photo-wrap {
+  position: relative;
+  flex-shrink: 0;
+  width: 120px;
+  height: 120px;
+}
+.testimonial-photo-wrap img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  position: relative;
+  z-index: 1;
+}
+.testimonial-content blockquote {
+  font-size: 18px;
+  line-height: 1.7;
+  font-style: italic;
+  color: #333;
+  margin-bottom: 20px;
+}
+.testimonial-content blockquote::before {
+  content: '\201C';
+  font-size: 48px;
+  color: #006633;
+  line-height: 0;
+  display: block;
+  margin-bottom: 8px;
+}
+.testimonial-content .author {
+  font-size: 15px;
+  font-weight: 700;
+  color: #121631;
+}
+.testimonial-content .role {
+  font-size: 14px;
+  color: #777;
+}
+
+/* ==========================================================
+   CALCULATORS
+   ========================================================== */
+.calculators {
+  background: #fff;
+  padding: 100px 0;
+}
+.calculators-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.calculators-header .section-sub { margin: 0 auto; }
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.calc-card {
+  border-radius: 16px;
+  padding: 40px 32px;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+.calc-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.18);
+}
+.calc-card.calc-eor {
+  background: linear-gradient(135deg, #7393f9, #006633);
+  color: #fff;
+}
+.calc-card.calc-aor {
+  background: linear-gradient(135deg, #b7d4f7, #e7fcdb);
+  color: #121631;
+}
+.calc-card.calc-vor {
+  background: linear-gradient(135deg, #e7fcdb, #b7d4f7, #ffbf00);
+  color: #121631;
+}
+.calc-card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.calc-card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: rgba(255,255,255,0.2);
+}
+.calc-card.calc-aor .calc-card-icon,
+.calc-card.calc-vor .calc-card-icon {
+  background: rgba(18,22,49,0.06);
+}
+.calc-card .calc-tag {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+.calc-card h3 {
+  font-size: 22px;
+  font-weight: 900;
+  margin-bottom: 12px;
+}
+.calc-card p {
+  font-size: 15px;
+  line-height: 1.65;
+  opacity: 0.9;
+  flex: 1;
+}
+.calc-card .card-link {
+  margin-top: 24px;
+  font-weight: 700;
+  font-size: 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.calc-card .card-link svg {
+  transition: transform 0.2s;
+}
+.calc-card .card-link:hover svg {
+  transform: translateX(4px);
+}
+
+/* ==========================================================
+   PODCAST
+   ========================================================== */
+.podcast {
+  background: #fff;
+  padding: 100px 0;
+  border-top: 1px solid #e8e8e8;
+}
+.podcast-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.podcast-image-wrap {
+  position: relative;
+}
+.podcast-image-wrap img {
+  position: relative;
+  z-index: 1;
+  border-radius: 16px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+}
+.podcast-content .eyebrow { margin-bottom: 12px; }
+.podcast-content h2 {
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+.podcast-content .podcast-sub {
+  font-size: 17px;
+  color: #555;
+  line-height: 1.65;
+  margin-bottom: 32px;
+}
+.episode-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+.episode-item {
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: background 0.2s, transform 0.2s;
+  border: 1px solid #e8e8e8;
+}
+.episode-item:hover {
+  background: #f2f2f2;
+  transform: translateX(4px);
+}
+.episode-play {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7393f9, #006633);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.episode-play svg {
+  width: 14px;
+  height: 14px;
+  fill: #fff;
+  margin-left: 2px;
+}
+.episode-item span {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* ==========================================================
+   CTA SECTION
+   ========================================================== */
+.cta-section {
+  background: linear-gradient(135deg, #7393f9, #006633);
+  padding: 100px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='20' y1='16' x2='20' y2='24' stroke='%23ffffff' stroke-width='1' opacity='0.08'/%3E%3Cline x1='16' y1='20' x2='24' y2='20' stroke='%23ffffff' stroke-width='1' opacity='0.08'/%3E%3C/svg%3E");
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+.cta-section .container { position: relative; z-index: 1; }
+.cta-section h2 {
+  font-size: 44px;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 16px;
+}
+.cta-section p {
+  font-size: 18px;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 36px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.cta-section .btn-marigold {
+  font-size: 17px;
+  padding: 18px 44px;
+}
+
+/* ==========================================================
+   FOOTER
+   ========================================================== */
+.footer {
+  background: #121631;
+  color: #fff;
+  padding: 80px 0 40px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 60px;
+}
+.footer-brand .footer-logo img {
+  height: 36px;
+  margin-bottom: 16px;
+}
+.footer-brand .footer-tagline {
+  font-size: 15px;
+  color: #afafaf;
+  line-height: 1.6;
+}
+.footer-col h4 {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #afafaf;
+  margin-bottom: 20px;
+}
+.footer-col a {
+  display: block;
+  font-size: 15px;
+  color: #ddd;
+  padding: 4px 0;
+  transition: color 0.2s;
+}
+.footer-col a:hover { color: #ffbf00; }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.footer-bottom p {
+  font-size: 14px;
+  color: #afafaf;
+}
+.footer-bottom-links {
+  display: flex;
+  gap: 24px;
+}
+.footer-bottom-links a {
+  font-size: 14px;
+  color: #afafaf;
+  transition: color 0.2s;
+}
+.footer-bottom-links a:hover { color: #fff; }
+
+/* ==========================================================
+   MOBILE NAV OVERLAY
+   ========================================================== */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  z-index: 2000;
+  flex-direction: column;
+  padding: 24px;
+  overflow-y: auto;
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.mobile-nav-close {
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #121631;
+  padding: 8px;
+}
+.mobile-nav a {
+  display: block;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 16px 0;
+  border-bottom: 1px solid #e8e8e8;
+  color: #121631;
+}
+.mobile-nav .btn {
+  margin-top: 24px;
+  width: 100%;
+  text-align: center;
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+@media (max-width: 1024px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero-content h1 { font-size: 44px; }
+  .hero-image-wrap { max-width: 560px; margin: 0 auto; }
+  .solutions-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+  .why-grid { grid-template-columns: 1fr; gap: 40px; }
+  .why-image-wrap { order: -1; max-width: 500px; margin: 0 auto; }
+  .steps-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+  .calc-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+  .podcast-grid { grid-template-columns: 1fr; gap: 40px; }
+  .podcast-image-wrap { order: -1; max-width: 500px; margin: 0 auto; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  .main-nav { display: none; }
+  .header-cta .btn { display: none; }
+  .header-login, .header-login-sep { display: none; }
+  .mobile-toggle { display: flex; }
+  .hero { padding: 48px 0 64px; }
+  .hero-content h1 { font-size: 36px; }
+  .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .hero-stat .stat-number { font-size: 24px; }
+  .icp-cards { flex-direction: column; }
+  .section-heading { font-size: 32px; }
+  .testimonial-card.active { flex-direction: column; text-align: center; padding: 32px 24px; }
+  .testimonial-photo-wrap { margin: 0 auto; }
+  .cta-section h2 { font-size: 32px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 { font-size: 30px; }
+  .hero-ctas { flex-direction: column; }
+  .hero-ctas .btn { width: 100%; }
+  .hero-stats { grid-template-columns: 1fr 1fr; }
+  .why-stats { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="main-header">
+  <div class="container">
+    <a href="#" class="header-logo">
+      <img src="/images/brand/logo-light.svg" alt="myBasePay">
+    </a>
+    <nav class="main-nav">
+      <a href="/solutions/eor/">Solutions</a>
+      <a href="/about/">About</a>
+      <a href="/calculators/misclassification-risk/">Tools</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+    <div class="header-cta">
+      <a href="#" class="header-login">Member Login</a>
+      <span class="header-login-sep">|</span>
+      <a href="#" class="header-login">Worker Login</a>
+      <a href="/demo/" class="btn btn-marigold">Schedule a Demo</a>
+    </div>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-header">
+    <a href="#" class="header-logo">
+      <img src="/images/brand/logo-light.svg" alt="myBasePay" style="height:36px;">
+    </a>
+    <button class="mobile-nav-close" id="mobileClose" aria-label="Close menu">&times;</button>
+  </div>
+  <a href="/solutions/eor/">Solutions</a>
+  <a href="/about/">About</a>
+  <a href="/calculators/misclassification-risk/">Tools</a>
+  <a href="/blog/">Resources</a>
+  <a href="/demo/" class="btn btn-marigold">Schedule a Demo</a>
+</div>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <!-- LEFT: Content -->
+      <div class="hero-content">
+        <h1>
+          Your Workforce.<br>
+          <span class="gradient-text">Fully Managed.</span>
+        </h1>
+        <p class="hero-sub">
+          One platform for EOR, AOR, and VOR. Built by workforce compliance experts to help you hire compliantly, control costs, and scale your flexible workforce with confidence.
+        </p>
+        <div class="hero-ctas">
+          <a href="/demo/" class="btn btn-marigold">Schedule a Demo</a>
+          <a href="#" class="btn btn-outline">Explore Solutions</a>
+        </div>
+        <div class="icp-cards">
+          <div class="icp-card">
+            <div class="icp-card-icon" style="background: rgba(0,102,51,0.08);">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#006633" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
+            </div>
+            <div>
+              <h3>Staffing Agency</h3>
+              <p>EOR, AOR &amp; Compliance for Your Clients</p>
+            </div>
+          </div>
+          <div class="icp-card">
+            <div class="icp-card-icon" style="background: rgba(115,147,249,0.08);">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#7393f9" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21"/></svg>
+            </div>
+            <div>
+              <h3>Enterprise</h3>
+              <p>Workforce Management at Scale</p>
+            </div>
+          </div>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="stat-number">61+</div>
+            <div class="stat-label">Countries Served</div>
+          </div>
+          <div class="hero-stat">
+            <div class="stat-number">15K+</div>
+            <div class="stat-label">Workers Managed</div>
+          </div>
+          <div class="hero-stat">
+            <div class="stat-number">99.7%</div>
+            <div class="stat-label">Compliance Rate</div>
+          </div>
+          <div class="hero-stat">
+            <div class="stat-number">48hr</div>
+            <div class="stat-label">Avg. Onboarding</div>
+          </div>
+        </div>
+      </div>
+      <!-- RIGHT: Image with brand shapes -->
+      <div class="hero-image-wrap">
+        <!-- Brand shape top-left -->
+        <div class="brand-shape" style="top:-16px;left:-16px;width:100px;height:80px;opacity:1;"></div>
+        <!-- Brand shape bottom-right (taller rectangle) -->
+        <div class="brand-shape" style="bottom:-14px;right:-14px;width:70px;height:110px;opacity:0.75;"></div>
+        <!-- Brand shape mid-left (small square) -->
+        <div class="brand-shape" style="bottom:40px;left:-20px;width:50px;height:50px;opacity:0.5;"></div>
+        <img src="/images/brand/hero-cover.jpg" alt="Workforce solutions  - myBasePay team at work">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TRUST BAR
+     ============================================================ -->
+<section class="trust-bar">
+  <div class="container">
+    <div class="trust-bar-inner">
+      <p>Trusted by 200+ Companies</p>
+      <div class="trust-logos">
+        <span class="trust-logo">Enterprise Co.</span>
+        <span class="trust-logo">StaffPro</span>
+        <span class="trust-logo">GlobalHR</span>
+        <span class="trust-logo">TechForce</span>
+        <span class="trust-logo">MedStaff</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SOLUTIONS
+     ============================================================ -->
+<section class="solutions">
+  <div class="container">
+    <div class="solutions-header">
+      <div class="eyebrow">Solutions</div>
+      <h2 class="section-heading">Every Workforce Need. One Platform.</h2>
+      <p class="section-sub">Contingent workforce management isn't just about filling roles -it's about building a structure that balances cost, compliance, and scalability.</p>
+    </div>
+    <div class="solutions-grid">
+      <!-- EOR Card -->
+      <div class="solution-card eor">
+        <div class="card-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg>
+        </div>
+        <div class="card-label">Employer of Record</div>
+        <h3>EOR</h3>
+        <p>Simplify and secure your workforce expansion. We act as the legal employer for your contingent and international workers -managing payroll, benefits, tax, and compliance across jurisdictions.</p>
+        <a href="#" class="card-link">
+          Learn More
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <!-- AOR Card -->
+      <div class="solution-card aor">
+        <div class="card-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke="#121631" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15a2.25 2.25 0 012.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z"/></svg>
+        </div>
+        <div class="card-label">Agent of Record</div>
+        <h3>AOR</h3>
+        <p>Manage contractor relationships with full classification compliance. We handle contracts, payments, and compliance oversight -mitigating misclassification risk at scale.</p>
+        <a href="#" class="card-link">
+          Learn More
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <!-- VOR Card -->
+      <div class="solution-card vor">
+        <div class="card-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke="#121631" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21"/></svg>
+        </div>
+        <div class="card-label">Vendor of Record</div>
+        <h3>VOR</h3>
+        <p>Centralize your staffing suppliers -standardizing contracts, ensuring compliance, and consolidating payments for clearer oversight and better cost control.</p>
+        <a href="#" class="card-link">
+          Learn More
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHY MBP
+     ============================================================ -->
+<section class="why-mbp">
+  <div class="container">
+    <div class="why-grid">
+      <!-- LEFT: Image with brand shapes -->
+      <div class="why-image-wrap">
+        <!-- Brand shape top-right -->
+        <div class="brand-shape" style="top:-14px;right:-14px;width:90px;height:70px;opacity:1;"></div>
+        <!-- Brand shape bottom-left (tall narrow) -->
+        <div class="brand-shape" style="bottom:-18px;left:-12px;width:60px;height:120px;opacity:0.65;"></div>
+        <!-- Brand shape top-left (small accent) -->
+        <div class="brand-shape" style="top:30px;left:-22px;width:44px;height:44px;opacity:0.45;"></div>
+        <img src="/images/brand/why-mbp-new.jpg" alt="myBasePay team  - workforce compliance experts">
+      </div>
+      <!-- RIGHT: Content -->
+      <div>
+        <div class="eyebrow">Why myBasePay</div>
+        <h2 class="section-heading">Built for Compliance. Designed for Growth.</h2>
+        <p class="section-sub">myBasePay is built by workforce compliance experts. We combine deep expertise with purpose-built technology to help organizations cut through the complexity -selecting the right model (or combination) to build a compliant, scalable, and cost-effective workforce strategy.</p>
+        <div class="why-stats">
+          <div class="why-stat-card">
+            <div class="stat-number">61+</div>
+            <div class="stat-label">Countries Served</div>
+          </div>
+          <div class="why-stat-card">
+            <div class="stat-number">99.7%</div>
+            <div class="stat-label">Compliance Rate</div>
+          </div>
+          <div class="why-stat-card">
+            <div class="stat-number">48hr</div>
+            <div class="stat-label">Average Onboarding</div>
+          </div>
+          <div class="why-stat-card">
+            <div class="stat-number">15K+</div>
+            <div class="stat-label">Workers Managed</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     HOW IT WORKS
+     ============================================================ -->
+<section class="how-it-works">
+  <div class="container">
+    <div class="how-header">
+      <div class="eyebrow">How It Works</div>
+      <h2 class="section-heading">Simple to Start. Powerful to Scale.</h2>
+      <p class="section-sub">Get your workforce compliant and managed in three straightforward steps.</p>
+    </div>
+    <div class="steps-grid">
+      <!-- Step 1 -->
+      <div class="step-card">
+        <div class="step-number">01</div>
+        <div class="step-icon">
+          <img src="/images/icons/icon-question.svg" alt="Step 1 icon">
+        </div>
+        <h3>Tell Us Your Workforce Mix</h3>
+        <p>Share your current setup  - employee count, contractor relationships, geographies, and compliance concerns. We'll map it all out.</p>
+      </div>
+      <!-- Step 2 -->
+      <div class="step-card">
+        <div class="step-number">02</div>
+        <div class="step-icon">
+          <img src="/images/icons/icon-clipboard.svg" alt="Step 2 icon">
+        </div>
+        <h3>We Handle the Complexity</h3>
+        <p>Our experts design the right combination of EOR, AOR, and VOR services  - setting up compliant structures, payroll, and contracts tailored to your needs.</p>
+      </div>
+      <!-- Step 3 -->
+      <div class="step-card">
+        <div class="step-number">03</div>
+        <div class="step-icon">
+          <img src="/images/icons/icon-payment.svg" alt="Step 3 icon">
+        </div>
+        <h3>Scale with Confidence</h3>
+        <p>Onboard workers in as little as 48 hours. Add new markets, consolidate vendors, and grow your workforce  - all from one platform with full compliance coverage.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TESTIMONIALS
+     ============================================================ -->
+<section class="testimonials">
+  <div class="container">
+    <div class="testimonials-header">
+      <div class="eyebrow">What Our Clients Say</div>
+      <h2 class="section-heading">Trusted by Workforce Leaders</h2>
+    </div>
+    <div class="testimonial-toggle">
+      <button class="toggle-btn active" data-tab="staffing" id="toggleStaffing">Staffing</button>
+      <button class="toggle-btn" data-tab="enterprise" id="toggleEnterprise">Enterprise</button>
+    </div>
+    <!-- Staffing Testimonial -->
+    <div class="testimonial-card active" id="testimonialStaffing">
+      <div class="testimonial-photo-wrap">
+        <!-- Brand shape behind photo -->
+        <div class="brand-shape" style="top:-8px;left:-8px;width:60px;height:60px;opacity:0.8;border-radius:50%;"></div>
+        <div class="brand-shape" style="bottom:-6px;right:-10px;width:40px;height:55px;opacity:0.5;"></div>
+        <img src="/images/brand/photo-4.jpg" alt="VP of Operations">
+      </div>
+      <div class="testimonial-content">
+        <blockquote>myBasePay transformed how we manage our contingent workforce. The compliance alone has saved us from costly misclassification risks.</blockquote>
+        <div class="author">VP of Operations</div>
+        <div class="role">National Staffing Agency</div>
+      </div>
+    </div>
+    <!-- Enterprise Testimonial -->
+    <div class="testimonial-card" id="testimonialEnterprise">
+      <div class="testimonial-photo-wrap">
+        <!-- Brand shape behind photo -->
+        <div class="brand-shape" style="top:-10px;right:-8px;width:55px;height:55px;opacity:0.8;border-radius:50%;"></div>
+        <div class="brand-shape" style="bottom:-8px;left:-10px;width:45px;height:50px;opacity:0.5;"></div>
+        <img src="/images/brand/testimonial-male.jpg" alt="Director of Procurement">
+      </div>
+      <div class="testimonial-content">
+        <blockquote>We consolidated three vendors into one platform. The visibility into spend and compliance has been a complete game-changer for our procurement team.</blockquote>
+        <div class="author">Director of Procurement</div>
+        <div class="role">Fortune 500 Enterprise</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CALCULATORS
+     ============================================================ -->
+<section class="calculators">
+  <div class="container">
+    <div class="calculators-header">
+      <div class="eyebrow">Free Tools</div>
+      <h2 class="section-heading">Calculate Your Risk. Quantify Your Savings.</h2>
+      <p class="section-sub">Use our interactive calculators to understand your exposure and see the ROI of working with myBasePay.</p>
+    </div>
+    <div class="calc-grid">
+      <!-- EOR Calculator -->
+      <div class="calc-card calc-eor">
+        <div class="calc-card-top">
+          <div class="calc-card-icon">
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 003 12c0-1.605.42-3.113 1.157-4.418"/></svg>
+          </div>
+          <div class="calc-tag">EOR</div>
+        </div>
+        <h3>Global Expansion Cost Calculator</h3>
+        <p>Estimate the true cost of expanding your workforce into new markets  - including entity setup, payroll, compliance, and benefits.</p>
+        <a href="#" class="card-link">
+          Calculate Now
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <!-- AOR Calculator -->
+      <div class="calc-card calc-aor">
+        <div class="calc-card-top">
+          <div class="calc-card-icon">
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#121631" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+          </div>
+          <div class="calc-tag">AOR</div>
+        </div>
+        <h3>Misclassification Risk Calculator</h3>
+        <p>Assess your exposure to worker misclassification penalties  - and see how much proper classification could save you.</p>
+        <a href="#" class="card-link">
+          Calculate Now
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <!-- VOR Calculator -->
+      <div class="calc-card calc-vor">
+        <div class="calc-card-top">
+          <div class="calc-card-icon">
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#121631" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div class="calc-tag">VOR</div>
+        </div>
+        <h3>Contingent Spend Optimizer</h3>
+        <p>Analyze your current staffing vendor spend and discover consolidation savings with centralized vendor management.</p>
+        <a href="#" class="card-link">
+          Calculate Now
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PODCAST
+     ============================================================ -->
+<section class="podcast">
+  <div class="container">
+    <div class="podcast-grid">
+      <!-- LEFT: Image with brand shapes -->
+      <div class="podcast-image-wrap">
+        <!-- Brand shape top-left (wide rectangle) -->
+        <div class="brand-shape" style="top:-14px;left:-18px;width:110px;height:60px;opacity:1;"></div>
+        <!-- Brand shape bottom-right (tall narrow) -->
+        <div class="brand-shape" style="bottom:-16px;right:-12px;width:55px;height:100px;opacity:0.7;"></div>
+        <!-- Brand shape mid-right (small square accent) -->
+        <div class="brand-shape" style="top:50%;right:-24px;width:48px;height:48px;opacity:0.4;transform:translateY(-50%);"></div>
+        <img src="/images/brand/podcast-new.jpg" alt="Leaders Unfiltered podcast">
+      </div>
+      <!-- RIGHT: Content -->
+      <div class="podcast-content">
+        <div class="eyebrow">Leaders Unfiltered</div>
+        <h2>Real Conversations with Workforce Leaders</h2>
+        <p class="podcast-sub">Candid conversations with the people shaping the future of work. Compliance, strategy, innovation -no filter.</p>
+        <div class="episode-list">
+          <div class="episode-item">
+            <div class="episode-play">
+              <svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>
+            </div>
+            <span>The Future of Contingent Workforce Management</span>
+          </div>
+          <div class="episode-item">
+            <div class="episode-play">
+              <svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>
+            </div>
+            <span>Navigating Worker Classification in 2025</span>
+          </div>
+          <div class="episode-item">
+            <div class="episode-play">
+              <svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>
+            </div>
+            <span>Building a Resilient Workforce Strategy</span>
+          </div>
+        </div>
+        <div style="position:relative;display:inline-block;">
+          <div style="position:absolute;top:-10px;left:-14px;width:38px;height:30px;background:#006633;opacity:0.65;border-radius:12px;"></div>
+          <div style="position:absolute;bottom:-8px;right:-10px;width:28px;height:34px;background:#006633;opacity:0.4;border-radius:12px;"></div>
+          <a href="#" class="btn btn-gradient" style="position:relative;">Listen Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA SECTION
+     ============================================================ -->
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to Simplify Your Workforce?</h2>
+    <p>See how myBasePay helps you hire compliantly, reduce costs, and scale with confidence.</p>
+    <div style="position:relative;display:inline-block;">
+      <div style="position:absolute;top:-12px;left:-16px;width:44px;height:36px;background:#006633;opacity:0.6;border-radius:12px;"></div>
+      <div style="position:absolute;bottom:-10px;right:-12px;width:32px;height:40px;background:#006633;opacity:0.4;border-radius:12px;"></div>
+      <a href="/demo/" class="btn btn-marigold" style="position:relative;">Schedule a Demo</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Brand column -->
+      <div class="footer-brand">
+        <a href="#" class="footer-logo">
+          <img src="/images/brand/logo-white.svg" alt="myBasePay">
+        </a>
+        <p class="footer-tagline">Architects of the Flexible Workforce</p>
+      </div>
+      <!-- Solutions -->
+      <div class="footer-col">
+        <h4>Solutions</h4>
+        <a href="/solutions/eor/">Employer of Record</a>
+        <a href="/solutions/aor/">Agent of Record</a>
+        <a href="/solutions/vor/">Vendor of Record</a>
+      </div>
+      <!-- Company -->
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="/about/">About</a>
+      </div>
+      <!-- Tools -->
+      <div class="footer-col">
+        <h4>Tools</h4>
+        <a href="/calculators/misclassification-risk/">Misclassification Calculator</a>
+        <a href="/calculators/global-expansion/">Expansion Calculator</a>
+        <a href="/calculators/spend-optimizer/">Spend Optimizer</a>
+      </div>
+      <!-- Resources -->
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="/blog/">Blog</a>
+        <a href="/podcast/">Podcast</a>
+        <a href="/news/">News &amp; Press</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 myBasePay. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+// ---- Mobile Menu Toggle ----
+(function() {
+  var toggle = document.getElementById('mobileToggle');
+  var nav = document.getElementById('mobileNav');
+  var close = document.getElementById('mobileClose');
+
+  if (toggle && nav && close) {
+    toggle.addEventListener('click', function() {
+      nav.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+    close.addEventListener('click', function() {
+      nav.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+    // Close when a nav link is clicked
+    var links = nav.querySelectorAll('a');
+    links.forEach(function(link) {
+      link.addEventListener('click', function() {
+        nav.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+})();
+
+// ---- Testimonial Toggle ----
+(function() {
+  var btnStaffing = document.getElementById('toggleStaffing');
+  var btnEnterprise = document.getElementById('toggleEnterprise');
+  var cardStaffing = document.getElementById('testimonialStaffing');
+  var cardEnterprise = document.getElementById('testimonialEnterprise');
+
+  if (btnStaffing && btnEnterprise && cardStaffing && cardEnterprise) {
+    btnStaffing.addEventListener('click', function() {
+      btnStaffing.classList.add('active');
+      btnEnterprise.classList.remove('active');
+      cardStaffing.classList.add('active');
+      cardEnterprise.classList.remove('active');
+    });
+    btnEnterprise.addEventListener('click', function() {
+      btnEnterprise.classList.add('active');
+      btnStaffing.classList.remove('active');
+      cardEnterprise.classList.add('active');
+      cardStaffing.classList.remove('active');
+    });
+  }
+})();
+</script>
+
+<script>
+// Block all outbound navigation - homepage only mode
+document.addEventListener('click', function(e) {
+  var link = e.target.closest('a');
+  if (!link) return;
+  var href = link.getAttribute('href');
+  if (!href) return;
+  if (href.charAt(0) === '#' || href.startsWith('javascript:')) return;
+  e.preventDefault();
+});
+</script>
+
+</body>
+</html>

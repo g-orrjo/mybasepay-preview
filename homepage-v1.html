@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>myBasePay | Architects of the Flexible Workforce</title>
+<meta name="description" content="One unified platform to manage your contingent workforce. EOR, AOR, and VOR solutions that minimize risk, maximize compliance, and control costs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+/* Reset & Base */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Roboto', sans-serif; color: #121631; background: #fff; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+/* Colors */
+:root {
+  --emerald: #006633;
+  --prussian: #121631;
+  --wisteria: #7393f9;
+  --alabaster: #e8e8e8;
+  --frost: #e7fcdb;
+  --icy: #b7d4f7;
+  --marigold: #ffbf00;
+  --white-smoke: #f2f2f2;
+  --cool-steel: #afafaf;
+  --grad-primary: linear-gradient(135deg, #7393f9 0%, #006633 100%);
+}
+
+/* Utility */
+.max-w-6xl { max-width: 72rem; margin-left: auto; margin-right: auto; }
+.px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+.relative { position: relative; }
+.overflow-hidden { overflow: hidden; }
+.pointer-events-none { pointer-events: none; }
+.text-center { text-align: center; }
+.z-10 { z-index: 10; }
+
+/* Brand gradient text */
+.brand-gradient-text {
+  background: var(--grad-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.stat-gradient {
+  background: linear-gradient(135deg, #121631 0%, #006633 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.brand-gradient-primary { background: var(--grad-primary); }
+
+/* Eyebrow accent */
+.eyebrow-accent { position: relative; padding-bottom: 12px; }
+.eyebrow-accent::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 40px; height: 2px;
+  background: linear-gradient(90deg, #006633 0%, #7393f9 100%);
+  border-radius: 2px;
+}
+.eyebrow-accent-center::after { left: 50%; transform: translateX(-50%); }
+
+/* Icon gradients */
+.icon-gradient-emerald { background: linear-gradient(135deg, rgba(231,252,219,0.6) 0%, rgba(183,212,247,0.3) 100%); }
+.icon-gradient-wisteria { background: linear-gradient(135deg, rgba(183,212,247,0.4) 0%, rgba(115,147,249,0.15) 100%); }
+
+/* Card hover gradient */
+.card-hover-gradient { position: relative; }
+.card-hover-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #7393f9 0%, #006633 100%);
+  border-radius: 1rem 1rem 0 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.card-hover-gradient:hover::before { opacity: 1; }
+
+/* Brand patterns */
+.brand-cross {
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='20' y1='15' x2='20' y2='25' stroke='%23c8c8c8' stroke-width='1.2'/%3E%3Cline x1='15' y1='20' x2='25' y2='20' stroke='%23c8c8c8' stroke-width='1.2'/%3E%3C/svg%3E");
+  background-size: 40px 40px;
+}
+.brand-cross-dark {
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='20' y1='15' x2='20' y2='25' stroke='%23ffffff' stroke-width='1.2' opacity='0.12'/%3E%3Cline x1='15' y1='20' x2='25' y2='20' stroke='%23ffffff' stroke-width='1.2' opacity='0.12'/%3E%3C/svg%3E");
+  background-size: 40px 40px;
+}
+.dot-grid-fine {
+  background-image: radial-gradient(circle, #121631 0.5px, transparent 0.5px);
+  background-size: 20px 20px;
+}
+.dot-grid-fine-light {
+  background-image: radial-gradient(circle, #b7d4f7 0.5px, transparent 0.5px);
+  background-size: 20px 20px;
+}
+.line-grid-accent {
+  background-image: linear-gradient(to right, #b7d4f7 0.5px, transparent 0.5px), linear-gradient(to bottom, #b7d4f7 0.5px, transparent 0.5px);
+  background-size: 28px 28px;
+}
+.line-grid {
+  background-image: linear-gradient(to right, #e8e8e8 0.5px, transparent 0.5px), linear-gradient(to bottom, #e8e8e8 0.5px, transparent 0.5px);
+  background-size: 28px 28px;
+}
+
+/* Shape drift animation */
+@keyframes shape-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(10px, -8px) scale(1.02); }
+}
+.animate-shape-drift { animation: shape-drift 20s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-shape-drift { animation: none; }
+  html { scroll-behavior: auto; }
+}
+@media (max-width: 767px) {
+  .animate-shape-drift { animation: none; }
+}
+
+/* ===== HEADER ===== */
+.site-header {
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  position: sticky; top: 0; z-index: 50;
+  border-bottom: 1px solid rgba(232,232,232,0.5);
+}
+.header-inner {
+  max-width: 72rem; margin: 0 auto; padding: 0 1.5rem;
+  display: flex; align-items: center; justify-content: space-between; height: 64px;
+}
+.header-logo img { height: 32px; width: auto; }
+.header-nav { display: none; align-items: center; gap: 4px; font-size: 14px; }
+.header-nav-btn {
+  display: flex; align-items: center; gap: 4px;
+  padding: 8px 16px; border-radius: 8px; font-size: 14px; font-weight: 500;
+  color: rgba(18,22,49,0.6); transition: all 0.2s;
+}
+.header-nav-btn:hover { color: #121631; }
+.header-nav-link {
+  padding: 8px 16px; color: rgba(18,22,49,0.6); font-weight: 500; transition: color 0.2s;
+}
+.header-nav-link:hover { color: #121631; }
+.header-cta-group {
+  display: none; align-items: center; gap: 16px;
+  padding-left: 24px; border-left: 1px solid rgba(18,22,49,0.08);
+  margin-left: auto; flex-shrink: 0;
+}
+.header-login { font-size: 12px; color: rgba(18,22,49,0.5); font-weight: 500; transition: color 0.2s; }
+.header-login:hover { color: #121631; }
+.header-login-sep { color: rgba(18,22,49,0.2); font-size: 12px; }
+.btn-marigold {
+  display: inline-flex; background: #ffbf00; color: #121631; font-weight: 600;
+  padding: 10px 24px; border-radius: 12px; transition: filter 0.2s; font-size: 14px;
+}
+.btn-marigold:hover { filter: brightness(1.05); }
+.btn-marigold-lg { padding: 14px 36px; font-size: 16px; border-radius: 12px; }
+
+/* Mobile toggle */
+.mobile-toggle {
+  display: flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px; margin-right: -8px;
+}
+.mobile-toggle svg { width: 24px; height: 24px; }
+
+/* Mobile menu */
+.mobile-menu {
+  display: none; background: #fff; border-top: 1px solid rgba(232,232,232,0.5);
+  padding: 16px 24px; max-height: 85vh; overflow-y: auto;
+}
+.mobile-menu.open { display: block; }
+.mobile-menu-section { border-bottom: 1px solid rgba(232,232,232,0.3); }
+.mobile-menu-section:last-child { border-bottom: none; }
+.mobile-menu-toggle {
+  display: flex; align-items: center; justify-content: space-between;
+  width: 100%; padding: 14px 0; font-weight: 500; color: #121631; min-height: 48px;
+}
+.mobile-menu-toggle svg { width: 16px; height: 16px; color: rgba(18,22,49,0.3); transition: transform 0.2s; }
+.mobile-menu-toggle.expanded svg { transform: rotate(180deg); }
+.mobile-submenu { display: none; padding-left: 16px; padding-bottom: 8px; }
+.mobile-submenu.open { display: block; }
+.mobile-submenu a {
+  display: block; padding: 10px 0; font-size: 14px; color: rgba(18,22,49,0.6); min-height: 44px;
+  display: flex; align-items: center;
+}
+.mobile-submenu a:hover { color: #121631; }
+.mobile-cta { padding: 16px 0; }
+.mobile-cta .btn-marigold { display: block; text-align: center; padding: 14px 20px; }
+.mobile-logins { display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 12px; color: rgba(18,22,49,0.5); margin-top: 12px; }
+
+/* Dropdown panel */
+.dropdown-panel {
+  display: none; position: absolute; left: 0; right: 0; top: 100%;
+  border-bottom: 1px solid rgba(232,232,232,0.5);
+}
+.dropdown-panel.open { display: block; }
+.dropdown-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(255,255,255,0.95); backdrop-filter: blur(20px);
+}
+.dropdown-inner {
+  position: relative; max-width: 72rem; margin: 0 auto; padding: 32px 24px;
+}
+.dropdown-label {
+  font-size: 10px; font-weight: 700; color: var(--cool-steel);
+  text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 16px; padding-left: 4px;
+}
+.dropdown-grid { display: grid; gap: 4px; }
+.dropdown-grid-3 { grid-template-columns: repeat(3, 1fr); }
+.dropdown-item {
+  display: flex; align-items: flex-start; gap: 16px;
+  padding: 16px; border-radius: 12px; transition: background 0.2s;
+}
+.dropdown-item:hover { background: rgba(242,242,242,0.6); }
+.dropdown-item-icon {
+  width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; background: rgba(231,252,219,0.4); color: var(--emerald); transition: all 0.2s;
+}
+.dropdown-item:hover .dropdown-item-icon { background: var(--frost); transform: scale(1.05); }
+.dropdown-item-icon svg { width: 20px; height: 20px; }
+.dropdown-item-label { font-weight: 700; font-size: 14px; color: #121631; transition: color 0.2s; }
+.dropdown-item:hover .dropdown-item-label { color: var(--emerald); }
+.dropdown-item-desc { font-size: 12px; color: rgba(18,22,49,0.4); margin-top: 2px; line-height: 1.5; }
+
+@media (min-width: 1024px) {
+  .header-nav { display: flex; }
+  .header-cta-group { display: flex; }
+  .mobile-toggle { display: none; }
+}
+@media (max-width: 1023px) {
+  .dropdown-panel { display: none !important; }
+}
+
+/* ===== HERO ===== */
+.hero-section { position: relative; overflow: hidden; background: linear-gradient(180deg, #ffffff 0%, #f8fbff 60%, #f0f7ff 100%); }
+.hero-grid { display: grid; gap: 32px; align-items: center; padding-top: 48px; padding-bottom: 40px; }
+.hero-left h1 { font-size: clamp(2.25rem, 5vw, 4.5rem); font-weight: 900; color: #121631; line-height: 1.08; letter-spacing: -0.02em; }
+.hero-left p { margin-top: 20px; font-size: 18px; color: rgba(18,22,49,0.5); max-width: 32rem; line-height: 1.6; }
+.hero-buttons { margin-top: 32px; display: flex; flex-direction: column; gap: 12px; }
+.hero-buttons a { text-align: center; font-weight: 600; padding: 14px 28px; border-radius: 12px; font-size: 16px; transition: all 0.2s; }
+.btn-outline { border: 1px solid #e8e8e8; color: rgba(18,22,49,0.7); }
+.btn-outline:hover { border-color: rgba(18,22,49,0.3); color: #121631; }
+
+.hero-image-wrap { position: relative; }
+.hero-image-wrap .shape-1 { position: absolute; top: -16px; left: -16px; width: 100px; height: 80px; background: var(--emerald); border-radius: 12px; z-index: 0; }
+.hero-image-wrap .shape-2 { position: absolute; bottom: -14px; right: -14px; width: 70px; height: 110px; background: rgba(0,102,51,0.75); border-radius: 12px; z-index: 0; }
+.hero-image-wrap .shape-3 { position: absolute; bottom: 40px; left: -20px; width: 50px; height: 50px; background: rgba(0,102,51,0.5); border-radius: 12px; z-index: 0; display: none; }
+.hero-image-inner {
+  position: relative; z-index: 1; width: 100%; border-radius: 16px; overflow: hidden;
+  box-shadow: 0 8px 60px -12px rgba(18,22,49,0.12); aspect-ratio: 16/10;
+}
+.hero-image-inner img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+/* ICP cards */
+.icp-row { padding-bottom: 40px; }
+.icp-label { font-size: 12px; color: var(--cool-steel); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500; margin-bottom: 16px; }
+.icp-grid { display: grid; gap: 12px; max-width: 40rem; }
+.icp-card {
+  display: flex; align-items: center; gap: 16px; background: #fff;
+  border: 1px solid rgba(232,232,232,0.6); border-radius: 16px; padding: 20px; transition: all 0.3s;
+}
+.icp-card:hover { border-color: rgba(0,102,51,0.3); box-shadow: 0 10px 30px -8px rgba(18,22,49,0.08); }
+.icp-card-icon {
+  width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.icp-card-icon svg { width: 20px; height: 20px; }
+.icp-card-text { min-width: 0; }
+.icp-card-title { font-weight: 700; font-size: 14px; color: #121631; }
+.icp-card-desc { font-size: 12px; color: rgba(18,22,49,0.4); margin-top: 2px; }
+.icp-card-arrow { width: 16px; height: 16px; color: rgba(18,22,49,0.2); margin-left: auto; flex-shrink: 0; transition: all 0.3s; }
+.icp-card:hover .icp-card-arrow { color: var(--emerald); transform: translateX(4px); }
+
+/* Stats bar */
+.stats-bar { border-top: 1px solid rgba(232,232,232,0.5); padding: 40px 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.stat-value { font-size: clamp(1.875rem, 4vw, 3rem); font-weight: 900; }
+.stat-label { font-size: 14px; color: rgba(18,22,49,0.35); margin-top: 4px; }
+
+@media (min-width: 640px) {
+  .hero-buttons { flex-direction: row; gap: 16px; }
+  .hero-buttons a { text-align: center; }
+  .hero-image-wrap .shape-3 { display: block; }
+  .icp-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .icp-card { padding: 28px; gap: 20px; }
+  .icp-card-icon { width: 56px; height: 56px; }
+  .icp-card-icon svg { width: 24px; height: 24px; }
+  .icp-card-title { font-size: 16px; }
+  .icp-card-desc { font-size: 14px; }
+  .stats-bar { grid-template-columns: repeat(4, 1fr); gap: 40px; padding: 64px 0; }
+  .hero-left p { font-size: 20px; margin-top: 14px; }
+  .hero-buttons { margin-top: 20px; }
+  .hero-buttons a { padding: 14px 36px; }
+}
+@media (min-width: 1024px) {
+  .hero-grid { grid-template-columns: 3fr 2fr; gap: 64px; padding-top: 36px; padding-bottom: 32px; }
+  .hero-image-inner { aspect-ratio: 4/5; }
+}
+
+/* ===== TRUST BAR ===== */
+.trust-bar { border-top: 1px solid rgba(232,232,232,0.3); border-bottom: 1px solid rgba(232,232,232,0.3); background: linear-gradient(90deg, #f8fbff 0%, #f5faf2 50%, #f8fbff 100%); }
+.trust-inner { display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 32px 0; flex-wrap: wrap; }
+.trust-label { font-size: 12px; color: var(--cool-steel); text-transform: uppercase; letter-spacing: 0.1em; flex-shrink: 0; }
+.trust-label span { color: var(--emerald); font-weight: 600; }
+.trust-logos { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.trust-logo { display: flex; align-items: center; gap: 8px; opacity: 0.25; transition: opacity 0.2s; }
+.trust-logo:hover { opacity: 0.4; }
+.trust-logo-icon { width: 32px; height: 32px; border-radius: 8px; background: rgba(232,232,232,0.8); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.trust-logo-icon svg { width: 16px; height: 16px; color: rgba(175,175,175,0.5); }
+.trust-logo-name { font-weight: 700; font-size: 14px; white-space: nowrap; }
+@media (min-width: 640px) {
+  .trust-inner { flex-direction: row; align-items: center; gap: 32px; padding: 40px 0; }
+  .trust-label { font-size: 14px; }
+  .trust-logos { gap: 40px; }
+}
+@media (min-width: 768px) { .trust-logos { gap: 56px; } }
+
+/* ===== SOLUTIONS ===== */
+.solutions-section { position: relative; overflow: hidden; background: linear-gradient(170deg, #f0f7ff 0%, #f7faf5 40%, #f9fdf7 100%); }
+.solutions-grid { display: grid; gap: 16px; }
+.solution-card {
+  display: block; background: #fff; border-radius: 16px; padding: 24px; border: 1px solid rgba(232,232,232,0.6);
+  transition: all 0.3s; position: relative;
+}
+.solution-card:hover { border-color: rgba(0,102,51,0.2); box-shadow: 0 10px 30px -8px rgba(18,22,49,0.08); }
+.solution-card-top { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
+.solution-card-icon { width: 48px; height: 48px; border-radius: 12px; overflow: hidden; flex-shrink: 0; }
+.solution-card-icon img { width: 100%; height: 100%; }
+.solution-tag { display: inline-block; font-size: 12px; font-weight: 700; color: var(--emerald); background: rgba(231,252,219,0.6); padding: 6px 14px; border-radius: 8px; }
+.solution-card h3 { font-size: 20px; font-weight: 700; color: #121631; margin-bottom: 12px; }
+.solution-card p { font-size: 16px; color: rgba(18,22,49,0.5); line-height: 1.6; margin-bottom: 32px; }
+.solution-card-link { font-size: 16px; font-weight: 500; color: rgba(18,22,49,0.4); transition: color 0.3s; }
+.solution-card:hover .solution-card-link { color: var(--emerald); }
+@media (min-width: 640px) {
+  .solution-card { padding: 36px; }
+  .solutions-grid { gap: 24px; }
+}
+@media (min-width: 768px) { .solutions-grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* ===== WHY MYBASEPAY ===== */
+.why-section { position: relative; overflow: hidden; background: linear-gradient(180deg, #ffffff 0%, #fafcff 50%, #f5f9fe 100%); }
+.why-grid { display: grid; gap: 40px; align-items: start; }
+.why-photo-wrap { position: relative; }
+.why-photo-wrap .shape-a { position: absolute; top: -14px; right: -14px; width: 90px; height: 70px; background: var(--emerald); border-radius: 12px; z-index: 0; }
+.why-photo-wrap .shape-b { position: absolute; bottom: -16px; left: -12px; width: 60px; height: 120px; background: rgba(0,102,51,0.65); border-radius: 12px; z-index: 0; }
+.why-photo-wrap .shape-c { position: absolute; top: 32px; left: -20px; width: 44px; height: 44px; background: rgba(0,102,51,0.45); border-radius: 12px; z-index: 0; display: none; }
+.why-photo-inner { position: relative; z-index: 1; aspect-ratio: 16/9; width: 100%; border-radius: 16px; overflow: hidden; }
+.why-photo-inner img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.why-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; position: relative; }
+.why-stat {
+  background: #fff; border-radius: 16px; padding: 20px; border: 1px solid rgba(232,232,232,0.4); transition: border-color 0.2s;
+}
+.why-stat:hover { border-color: rgba(0,102,51,0.15); }
+.why-stat-value { font-size: clamp(1.875rem, 4vw, 2.5rem); font-weight: 900; }
+.why-stat-label { font-size: 14px; color: rgba(18,22,49,0.4); margin-top: 4px; }
+@media (min-width: 640px) {
+  .why-stats { gap: 24px; }
+  .why-stat { padding: 24px; }
+  .why-stat-label { font-size: 16px; margin-top: 8px; }
+  .why-photo-wrap .shape-c { display: block; }
+}
+@media (min-width: 1024px) {
+  .why-grid { grid-template-columns: repeat(2, 1fr); gap: 96px; }
+}
+
+/* ===== HOW IT WORKS ===== */
+.how-section { position: relative; overflow: hidden; background: linear-gradient(175deg, #f4faf0 0%, #f0f7ff 50%, #f7f9fc 100%); }
+.how-grid { display: grid; gap: 32px; }
+.how-step-top { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+.how-step-icon { width: 48px; height: 48px; border-radius: 12px; overflow: hidden; flex-shrink: 0; }
+.how-step-icon img { width: 100%; height: 100%; }
+.how-step-num { font-size: clamp(2.5rem, 5vw, 3rem); font-weight: 900; }
+.how-step h3 { font-size: 18px; font-weight: 700; color: #121631; margin-bottom: 8px; }
+.how-step p { font-size: 14px; color: rgba(18,22,49,0.5); line-height: 1.6; }
+@media (min-width: 640px) {
+  .how-step-top { margin-bottom: 20px; }
+  .how-step-icon { width: 56px; height: 56px; }
+  .how-step h3 { font-size: 20px; margin-bottom: 12px; }
+  .how-step p { font-size: 16px; }
+}
+@media (min-width: 768px) {
+  .how-grid { grid-template-columns: repeat(3, 1fr); gap: 48px; }
+}
+
+/* ===== TESTIMONIALS ===== */
+.testimonials-section { position: relative; overflow: hidden; background: linear-gradient(180deg, #fafcff 0%, #f5f0ff 50%, #fafcff 100%); }
+.testimonial-toggles { display: flex; justify-content: center; gap: 12px; margin-bottom: 32px; }
+.testimonial-toggle {
+  font-size: 14px; font-weight: 500; padding: 10px 20px; border-radius: 12px; transition: all 0.2s;
+}
+.testimonial-toggle.active { background: var(--grad-primary); color: #fff; box-shadow: 0 4px 12px -2px rgba(115,147,249,0.3); }
+.testimonial-toggle:not(.active) { background: var(--white-smoke); color: rgba(18,22,49,0.4); }
+.testimonial-toggle:not(.active):hover { color: rgba(18,22,49,0.6); }
+.testimonial-quote {
+  font-size: clamp(1.25rem, 3vw, 2.5rem); font-weight: 300; color: #121631;
+  line-height: 1.4; text-align: center; transition: all 0.3s;
+}
+.testimonial-attribution { margin-top: 40px; text-align: center; }
+.testimonial-photo-wrap { position: relative; width: 64px; height: 64px; margin: 0 auto 16px; }
+.testimonial-photo-wrap .shape-a { position: absolute; top: -8px; left: -8px; width: 30px; height: 30px; background: rgba(0,102,51,0.8); border-radius: 12px; z-index: 0; }
+.testimonial-photo-wrap .shape-b { position: absolute; bottom: -6px; right: -10px; width: 20px; height: 28px; background: rgba(0,102,51,0.5); border-radius: 12px; z-index: 0; }
+.testimonial-photo {
+  position: relative; z-index: 1; width: 64px; height: 64px; border-radius: 50%; overflow: hidden;
+  outline: 2px solid rgba(0,102,51,0.2); outline-offset: 2px;
+}
+.testimonial-photo img { width: 100%; height: 100%; object-fit: cover; }
+.testimonial-name { font-size: 16px; font-weight: 700; color: #121631; }
+.testimonial-company { font-size: 16px; color: rgba(18,22,49,0.4); margin-top: 4px; }
+@media (min-width: 640px) { .testimonial-toggles { margin-bottom: 56px; } }
+
+/* ===== CALCULATOR CTA ===== */
+.calc-section { position: relative; overflow: hidden; background: linear-gradient(175deg, #ffffff 0%, #f5faf2 40%, #f0f7ee 100%); }
+.calc-grid { display: grid; gap: 16px; }
+.calc-card {
+  display: block; background: #fff; border-radius: 16px; padding: 24px; border: 1px solid rgba(232,232,232,0.6);
+  transition: all 0.3s; position: relative;
+}
+.calc-card:hover { border-color: rgba(0,102,51,0.2); box-shadow: 0 10px 30px -8px rgba(18,22,49,0.08); }
+.calc-card-top { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+.calc-card-icon {
+  width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; color: var(--emerald); transition: all 0.2s;
+}
+.calc-card:hover .calc-card-icon { background: var(--frost) !important; transform: scale(1.05); }
+.calc-card-icon svg { width: 20px; height: 20px; }
+.calc-tag { font-size: 12px; font-weight: 700; padding: 6px 12px; border-radius: 8px; }
+.calc-card h3 { font-size: 18px; font-weight: 700; color: #121631; margin-bottom: 12px; transition: color 0.3s; }
+.calc-card:hover h3 { color: var(--emerald); }
+.calc-card > p { font-size: 16px; color: rgba(18,22,49,0.5); line-height: 1.6; margin-bottom: 24px; }
+.calc-card-link { font-size: 16px; font-weight: 500; color: rgba(18,22,49,0.4); transition: color 0.3s; }
+.calc-card:hover .calc-card-link { color: var(--emerald); }
+@media (min-width: 640px) {
+  .calc-card { padding: 32px; }
+  .calc-grid { gap: 24px; }
+  .calc-card-icon { width: 48px; height: 48px; }
+}
+@media (min-width: 768px) { .calc-grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* ===== PODCAST ===== */
+.podcast-section { position: relative; overflow: hidden; background: linear-gradient(170deg, #f0f3ff 0%, #f5f7fc 40%, #fafbff 100%); }
+.podcast-grid { display: grid; gap: 40px; align-items: center; }
+.podcast-cover-wrap { position: relative; margin-bottom: 16px; }
+.podcast-cover-wrap .shape-a { position: absolute; top: -14px; left: -16px; width: 110px; height: 60px; background: var(--emerald); border-radius: 12px; z-index: 0; }
+.podcast-cover-wrap .shape-b { position: absolute; bottom: -16px; right: -12px; width: 55px; height: 100px; background: rgba(0,102,51,0.7); border-radius: 12px; z-index: 0; }
+.podcast-cover-wrap .shape-c { position: absolute; top: 50%; right: -24px; transform: translateY(-50%); width: 48px; height: 48px; background: rgba(0,102,51,0.4); border-radius: 12px; z-index: 0; display: none; }
+.podcast-cover-inner { position: relative; z-index: 1; aspect-ratio: 16/9; width: 100%; border-radius: 16px; overflow: hidden; }
+.podcast-cover-inner img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.podcast-cover-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(18,22,49,0.6), transparent); z-index: 1; }
+.podcast-cover-badge {
+  position: absolute; bottom: 16px; left: 20px; z-index: 2; display: flex; align-items: center; gap: 12px;
+}
+.podcast-play-btn {
+  width: 40px; height: 40px; background: var(--marigold); border-radius: 12px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.podcast-play-btn svg { width: 16px; height: 16px; color: #121631; margin-left: 2px; }
+.podcast-cover-title { color: #fff; font-weight: 700; font-size: 14px; }
+.podcast-ep {
+  display: flex; align-items: center; gap: 16px; background: #fff; border-radius: 16px;
+  padding: 16px 20px; border: 1px solid rgba(232,232,232,0.6); transition: all 0.2s;
+}
+.podcast-ep:hover { border-color: rgba(0,102,51,0.2); }
+.podcast-ep-play {
+  width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.podcast-ep-play svg { width: 14px; height: 14px; color: #fff; margin-left: 2px; }
+.podcast-ep-title { font-size: 16px; font-weight: 500; color: #121631; transition: color 0.2s; }
+.podcast-ep:hover .podcast-ep-title { color: var(--emerald); }
+.btn-gradient {
+  display: inline-flex; background: var(--grad-primary); color: #fff; font-weight: 600;
+  font-size: 16px; padding: 16px 32px; border-radius: 12px; transition: filter 0.2s; box-shadow: 0 4px 12px -2px rgba(115,147,249,0.3);
+}
+.btn-gradient:hover { filter: brightness(1.1); }
+@media (min-width: 640px) {
+  .podcast-cover-wrap .shape-c { display: block; }
+  .podcast-ep { padding: 20px; }
+}
+@media (min-width: 1024px) {
+  .podcast-grid { grid-template-columns: repeat(2, 1fr); gap: 64px; }
+}
+
+/* ===== CTA SECTION ===== */
+.cta-section { position: relative; overflow: hidden; background: linear-gradient(135deg, #121631 0%, #161b3a 40%, #1a1f42 100%); }
+
+/* ===== FOOTER ===== */
+.site-footer { background: #121631; position: relative; overflow: hidden; }
+.footer-top-line { position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, rgba(115,147,249,0.3), transparent); }
+.footer-inner { padding: 64px 0; }
+.footer-grid { display: grid; gap: 40px; }
+.footer-brand p { color: rgba(255,255,255,0.3); font-size: 16px; line-height: 1.6; margin-top: 16px; }
+.footer-col-title { font-size: 12px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500; margin-bottom: 20px; }
+.footer-col ul { list-style: none; }
+.footer-col li + li { margin-top: 14px; }
+.footer-col a { font-size: 16px; color: rgba(255,255,255,0.4); transition: color 0.2s; }
+.footer-col a:hover { color: #fff; }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.05); margin-top: 56px; padding-top: 32px;
+  display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: 16px;
+}
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.2); }
+.footer-legal { display: flex; gap: 20px; }
+.footer-legal a { font-size: 12px; color: rgba(255,255,255,0.2); transition: color 0.2s; }
+.footer-legal a:hover { color: rgba(255,255,255,0.5); }
+@media (min-width: 640px) {
+  .footer-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-bottom { flex-direction: row; }
+}
+@media (min-width: 1024px) {
+  .footer-grid { grid-template-columns: 1fr 1fr 1fr 1fr 1fr; }
+}
+
+/* Section padding */
+.section-padding { padding: 64px 0; }
+@media (min-width: 640px) { .section-padding { padding: 96px 0; } }
+@media (min-width: 1024px) { .section-padding { padding: 128px 0; } }
+
+/* Heading styles */
+.section-eyebrow { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; }
+.section-title { font-size: clamp(1.875rem, 4vw, 3rem); font-weight: 900; color: #121631; line-height: 1.15; margin-top: 24px; }
+.section-subtitle { font-size: 16px; color: rgba(18,22,49,0.5); line-height: 1.6; max-width: 32rem; }
+@media (min-width: 640px) { .section-subtitle { font-size: 18px; } }
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a href="/" class="header-logo"><img src="/images/brand/logo-light.svg" alt="myBasePay"></a>
+    <nav class="header-nav">
+      <div class="header-nav-item" data-dropdown="solutions">
+        <button class="header-nav-btn">Solutions <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></button>
+      </div>
+      <div class="header-nav-item" data-dropdown="tools">
+        <button class="header-nav-btn">Tools <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></button>
+      </div>
+      <div class="header-nav-item" data-dropdown="resources">
+        <button class="header-nav-btn">Resources <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></button>
+      </div>
+      <a href="/about" class="header-nav-link">About</a>
+    </nav>
+    <div class="header-cta-group">
+      <a href="#" class="header-login">Member Login</a>
+      <span class="header-login-sep">|</span>
+      <a href="#" class="header-login">Worker Login</a>
+      <a href="/demo/" class="btn-marigold" style="margin-left:8px">Schedule a Demo</a>
+    </div>
+    <button class="mobile-toggle" onclick="toggleMobile()" aria-label="Menu">
+      <svg id="menu-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16"/></svg>
+      <svg id="close-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="display:none"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+
+  <!-- Dropdown: Solutions -->
+  <div class="dropdown-panel" id="dropdown-solutions">
+    <div class="dropdown-backdrop"></div>
+    <div class="dropdown-inner">
+      <p class="dropdown-label">Solutions</p>
+      <div class="dropdown-grid dropdown-grid-3">
+        <a href="/solutions/eor" class="dropdown-item">
+          <div class="dropdown-item-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg></div>
+          <div><div class="dropdown-item-label">Employer of Record</div><div class="dropdown-item-desc">Compliantly Hire and Pay Employees across 61+ Countries</div></div>
+        </a>
+        <a href="/solutions/aor" class="dropdown-item">
+          <div class="dropdown-item-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15a2.25 2.25 0 012.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z"/></svg></div>
+          <div><div class="dropdown-item-label">Agent of Record</div><div class="dropdown-item-desc">Engage Contractors with Full Classification Compliance</div></div>
+        </a>
+        <a href="/solutions/vor" class="dropdown-item">
+          <div class="dropdown-item-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21"/></svg></div>
+          <div><div class="dropdown-item-label">Vendor of Record</div><div class="dropdown-item-desc">Centralize Your Supplier Ecosystem with Full Visibility</div></div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dropdown: Tools -->
+  <div class="dropdown-panel" id="dropdown-tools">
+    <div class="dropdown-backdrop"></div>
+    <div class="dropdown-inner">
+      <p class="dropdown-label">Tools</p>
+      <div class="dropdown-grid dropdown-grid-3">
+        <a href="/calculators/misclassification-risk" class="dropdown-item">
+          <div class="dropdown-item-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m0-10.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.75c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286zm0 13.036h.008v.008H12v-.008z"/></svg></div>
+          <div><div class="dropdown-item-label">Misclassification Risk Calculator</div><div class="dropdown-item-desc">Assess Contractor Classification Risk and Financial Exposure</div></div>
+        </a>
+        <a href="/calculators/global-expansion" class="dropdown-item">
+          <div class="dropdown-item-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 9.75c0 .746-.092 1.471-.264 2.165m-16.472 0A9.028 9.028 0 004 9.75c0 .746.092 1.471.264 2.165m0 0a11.95 11.95 0 007.736 7.088m0 0a11.95 11.95 0 007.736-7.088"/></svg></div>
+          <div><div class="dropdown-item-label">Global Expansion Cost Calculator</div><div class="dropdown-item-desc">Compare Entity Setup Costs vs. Using an EOR</div></div>
+        </a>
+        <a href="/calculators/spend-optimizer" class="dropdown-item">
+          <div class="dropdown-item-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg></div>
+          <div><div class="dropdown-item-label">Contingent Spend Optimizer</div><div class="dropdown-item-desc">Find Hidden Savings in Your Vendor Spend</div></div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dropdown: Resources -->
+  <div class="dropdown-panel" id="dropdown-resources">
+    <div class="dropdown-backdrop"></div>
+    <div class="dropdown-inner">
+      <p class="dropdown-label">Resources</p>
+      <div class="dropdown-grid dropdown-grid-3">
+        <a href="/blog" class="dropdown-item">
+          <div class="dropdown-item-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z"/></svg></div>
+          <div><div class="dropdown-item-label">Blog</div><div class="dropdown-item-desc">Workforce Insights, Compliance Tips &amp; Strategy</div></div>
+        </a>
+        <a href="/podcast" class="dropdown-item">
+          <div class="dropdown-item-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z"/></svg></div>
+          <div><div class="dropdown-item-label">Podcast</div><div class="dropdown-item-desc">Leaders Unfiltered  - Real Workforce Conversations</div></div>
+        </a>
+        <a href="/news" class="dropdown-item">
+          <div class="dropdown-item-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z"/></svg></div>
+          <div><div class="dropdown-item-label">News &amp; Press</div><div class="dropdown-item-desc">Company Updates, Milestones &amp; Press Releases</div></div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-section">
+      <button class="mobile-menu-toggle" onclick="toggleMobileSection(this)">Solutions <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></button>
+      <div class="mobile-submenu"><a href="/solutions/eor">Employer of Record</a><a href="/solutions/aor">Agent of Record</a><a href="/solutions/vor">Vendor of Record</a></div>
+    </div>
+    <div class="mobile-menu-section">
+      <button class="mobile-menu-toggle" onclick="toggleMobileSection(this)">Tools <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></button>
+      <div class="mobile-submenu"><a href="/calculators/misclassification-risk">Misclassification Calculator</a><a href="/calculators/global-expansion">Expansion Calculator</a><a href="/calculators/spend-optimizer">Spend Optimizer</a></div>
+    </div>
+    <div class="mobile-menu-section">
+      <button class="mobile-menu-toggle" onclick="toggleMobileSection(this)">Resources <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></button>
+      <div class="mobile-submenu"><a href="/blog">Blog</a><a href="/podcast">Podcast</a><a href="/news">News &amp; Press</a></div>
+    </div>
+    <div class="mobile-menu-section"><a href="/about" style="display:flex;align-items:center;padding:14px 0;font-weight:500;min-height:48px">About</a></div>
+    <div class="mobile-cta">
+      <a href="/demo/" class="btn-marigold">Schedule a Demo</a>
+      <div class="mobile-logins"><a href="#">Member Login</a><span style="color:rgba(18,22,49,0.2)">|</span><a href="#">Worker Login</a></div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero-section">
+  <div style="position:absolute;top:0;right:0;width:800px;height:800px;background:radial-gradient(circle,rgba(183,212,247,0.3),rgba(231,252,219,0.2),transparent);border-radius:50%;filter:blur(60px);transform:translate(25%,-25%)" class="pointer-events-none"></div>
+  <div style="position:absolute;bottom:0;left:0;width:500px;height:500px;background:radial-gradient(circle,rgba(115,147,249,0.08),rgba(183,212,247,0.05),transparent);border-radius:50%;filter:blur(60px);transform:translate(-25%,33%)" class="pointer-events-none"></div>
+  <div style="position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(to top,rgba(231,252,219,0.08),transparent)" class="pointer-events-none"></div>
+  <div style="position:absolute;top:64px;right:0;width:350px;height:400px" class="brand-cross pointer-events-none" style="opacity:0.6;border-radius:16px"></div>
+  <div style="position:absolute;top:80px;left:40px;width:200px;height:200px" class="dot-grid-fine pointer-events-none" style="opacity:0.07;border-radius:24px"></div>
+  <svg style="position:absolute;top:-128px;right:-80px;width:800px;height:700px" class="pointer-events-none animate-shape-drift" viewBox="0 0 800 700" fill="none"><path d="M500 0C680 40 800 200 780 400C760 560 620 680 440 700L800 700V0Z" fill="#7393f9" fill-opacity="0.03"/><path d="M600 0C740 60 820 240 790 420C770 540 680 620 560 660L800 700V0Z" fill="#b7d4f7" fill-opacity="0.04"/></svg>
+  <svg style="position:absolute;bottom:-64px;left:-128px;width:500px;height:250px" class="pointer-events-none" viewBox="0 0 500 250" fill="none"><ellipse cx="250" cy="200" rx="250" ry="120" fill="#e7fcdb" fill-opacity="0.12"/></svg>
+
+  <div class="max-w-6xl px-6" style="position:relative;z-index:10">
+    <div class="hero-grid">
+      <div class="hero-left">
+        <h1>Your Workforce.<br><span class="brand-gradient-text">Fully Managed.</span></h1>
+        <p>One platform for EOR, AOR, and VOR. Built by workforce compliance experts to help you hire compliantly, control costs, and scale your flexible workforce with confidence.</p>
+        <div class="hero-buttons">
+          <a href="/demo/" class="btn-marigold btn-marigold-lg">Schedule a Demo</a>
+          <a href="#solutions" class="btn-outline">Explore Solutions</a>
+        </div>
+      </div>
+      <div class="hero-image-wrap">
+        <div class="shape-1"></div>
+        <div class="shape-2"></div>
+        <div class="shape-3"></div>
+        <div class="hero-image-inner">
+          <img src="/images/brand/hero-cover.jpg" alt="Modern office space with diverse professionals collaborating">
+        </div>
+      </div>
+    </div>
+
+    <div class="icp-row">
+      <p class="icp-label eyebrow-accent">I'm Looking for Solutions for</p>
+      <div class="icp-grid">
+        <a href="#solutions" class="icp-card">
+          <div class="icp-card-icon icon-gradient-emerald">
+            <svg fill="none" viewBox="0 0 24 24" stroke="#006633" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
+          </div>
+          <div class="icp-card-text"><div class="icp-card-title">Staffing Agency</div><div class="icp-card-desc">EOR, AOR &amp; Compliance for Your Clients</div></div>
+          <svg class="icp-card-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#solutions" class="icp-card">
+          <div class="icp-card-icon icon-gradient-wisteria">
+            <svg fill="none" viewBox="0 0 24 24" stroke="#7393f9" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21"/></svg>
+          </div>
+          <div class="icp-card-text"><div class="icp-card-title">Enterprise</div><div class="icp-card-desc">Workforce Management at Scale</div></div>
+          <svg class="icp-card-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="stats-bar">
+      <div><div class="stat-value stat-gradient" data-target="61" data-suffix="+">0+</div><div class="stat-label">Countries Served</div></div>
+      <div><div class="stat-value stat-gradient" data-target="15" data-suffix="K+">0K+</div><div class="stat-label">Workers Managed</div></div>
+      <div><div class="stat-value stat-gradient" data-target="99" data-suffix=".7%">0.7%</div><div class="stat-label">Compliance Rate</div></div>
+      <div><div class="stat-value stat-gradient" data-target="48" data-suffix="hr">0hr</div><div class="stat-label">Avg. Onboarding</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRUST BAR ===== -->
+<section class="trust-bar">
+  <div class="max-w-6xl px-6">
+    <div class="trust-inner">
+      <p class="trust-label">Trusted by <span>200+</span> Companies</p>
+      <div class="trust-logos">
+        <div class="trust-logo"><div class="trust-logo-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5a1.5 1.5 0 001.5-1.5V5.25a1.5 1.5 0 00-1.5-1.5H3.75a1.5 1.5 0 00-1.5 1.5v14.25a1.5 1.5 0 001.5 1.5z"/></svg></div><span class="trust-logo-name">Enterprise Co.</span></div>
+        <div class="trust-logo"><div class="trust-logo-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5a1.5 1.5 0 001.5-1.5V5.25a1.5 1.5 0 00-1.5-1.5H3.75a1.5 1.5 0 00-1.5 1.5v14.25a1.5 1.5 0 001.5 1.5z"/></svg></div><span class="trust-logo-name">StaffPro</span></div>
+        <div class="trust-logo"><div class="trust-logo-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5a1.5 1.5 0 001.5-1.5V5.25a1.5 1.5 0 00-1.5-1.5H3.75a1.5 1.5 0 00-1.5 1.5v14.25a1.5 1.5 0 001.5 1.5z"/></svg></div><span class="trust-logo-name">GlobalHR</span></div>
+        <div class="trust-logo"><div class="trust-logo-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5a1.5 1.5 0 001.5-1.5V5.25a1.5 1.5 0 00-1.5-1.5H3.75a1.5 1.5 0 00-1.5 1.5v14.25a1.5 1.5 0 001.5 1.5z"/></svg></div><span class="trust-logo-name">TechForce</span></div>
+        <div class="trust-logo"><div class="trust-logo-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5a1.5 1.5 0 001.5-1.5V5.25a1.5 1.5 0 00-1.5-1.5H3.75a1.5 1.5 0 00-1.5 1.5v14.25a1.5 1.5 0 001.5 1.5z"/></svg></div><span class="trust-logo-name">MedStaff</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SOLUTIONS ===== -->
+<section class="solutions-section" id="solutions">
+  <div style="position:absolute;bottom:0;left:0;width:500px;height:500px;background:radial-gradient(circle,rgba(115,147,249,0.08),rgba(0,102,51,0.05),transparent);border-radius:50%;filter:blur(60px);transform:translate(-25%,33%)" class="pointer-events-none"></div>
+  <div style="position:absolute;top:0;right:0;width:400px;height:400px;background:radial-gradient(circle,rgba(183,212,247,0.15),transparent);border-radius:50%;filter:blur(60px);transform:translate(25%,-33%)" class="pointer-events-none"></div>
+  <svg style="position:absolute;top:-40px;right:-64px;width:400px;height:400px" class="pointer-events-none" viewBox="0 0 400 400" fill="none"><path d="M400 0C400 220 220 400 0 400L0 350C190 350 350 190 350 0Z" fill="#006633" fill-opacity="0.02"/></svg>
+  <svg style="position:absolute;bottom:-80px;left:-64px;width:350px;height:200px" class="pointer-events-none animate-shape-drift" viewBox="0 0 350 200" fill="none"><ellipse cx="175" cy="130" rx="160" ry="70" fill="#7393f9" fill-opacity="0.04"/></svg>
+
+  <div class="max-w-6xl px-6 section-padding" style="position:relative;z-index:10">
+    <p class="section-eyebrow eyebrow-accent" style="color:var(--emerald)">Solutions</p>
+    <h2 class="section-title" style="max-width:36rem">Every Workforce Need. One Platform.</h2>
+    <p class="section-subtitle" style="margin-bottom:40px;margin-top:16px">Contingent workforce management isn't just about filling roles -it's about building a structure that balances cost, compliance, and scalability.</p>
+
+    <div class="solutions-grid">
+      <a href="/solutions/eor" class="solution-card card-hover-gradient">
+        <div class="solution-card-top">
+          <div class="solution-card-icon"><img src="/images/icons/icon-person.svg" alt=""></div>
+          <span class="solution-tag">EOR</span>
+        </div>
+        <h3>Employer of Record</h3>
+        <p>Simplify and secure your workforce expansion. We act as the legal employer for your contingent and international workers -managing payroll, benefits, tax, and compliance across jurisdictions.</p>
+        <span class="solution-card-link">Learn more &rarr;</span>
+      </a>
+      <a href="/solutions/aor" class="solution-card card-hover-gradient">
+        <div class="solution-card-top">
+          <div class="solution-card-icon"><img src="/images/icons/icon-clipboard.svg" alt=""></div>
+          <span class="solution-tag">AOR</span>
+        </div>
+        <h3>Agent of Record</h3>
+        <p>Manage contractor relationships with full classification compliance. We handle contracts, payments, and compliance oversight -mitigating misclassification risk at scale.</p>
+        <span class="solution-card-link">Learn more &rarr;</span>
+      </a>
+      <a href="/solutions/vor" class="solution-card card-hover-gradient">
+        <div class="solution-card-top">
+          <div class="solution-card-icon"><img src="/images/icons/icon-vendor.svg" alt=""></div>
+          <span class="solution-tag">VOR</span>
+        </div>
+        <h3>Vendor of Record</h3>
+        <p>Centralize your staffing suppliers -standardizing contracts, ensuring compliance, and consolidating payments for clearer oversight and better cost control.</p>
+        <span class="solution-card-link">Learn more &rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY MYBASEPAY ===== -->
+<section class="why-section">
+  <svg style="position:absolute;top:0;left:-80px;width:500px;height:600px" class="pointer-events-none" viewBox="0 0 500 600" fill="none"><path d="M0 100C120 50 280 80 320 220C360 360 260 480 120 540L0 580Z" fill="#006633" fill-opacity="0.04"/><path d="M0 150C100 80 240 120 280 250C320 380 230 470 100 520L0 550Z" fill="#b7d4f7" fill-opacity="0.06"/></svg>
+  <svg style="position:absolute;bottom:-40px;right:-40px;width:250px;height:250px" class="pointer-events-none animate-shape-drift" viewBox="0 0 250 250" fill="none"><circle cx="125" cy="125" r="100" fill="#e7fcdb" fill-opacity="0.2"/></svg>
+  <div style="position:absolute;top:0;right:0;width:500px;height:100%;background:linear-gradient(to left,rgba(183,212,247,0.08),transparent)" class="pointer-events-none"></div>
+  <div style="position:absolute;top:28%;right:7%;width:200px;height:200px;opacity:0.2;border-radius:16px" class="line-grid-accent pointer-events-none" id="why-line-grid"></div>
+
+  <div class="max-w-6xl px-6 section-padding" style="position:relative;z-index:10">
+    <div class="why-grid">
+      <div>
+        <p class="section-eyebrow eyebrow-accent" style="color:var(--emerald)">Why myBasePay</p>
+        <h2 class="section-title">Built for Compliance.<br>Designed for Growth.</h2>
+        <p class="section-subtitle" style="margin-top:20px;margin-bottom:32px">myBasePay is built by workforce compliance experts. We combine deep expertise with purpose-built technology to help organizations cut through the complexity -selecting the right model (or combination) to build a compliant, scalable, and cost-effective workforce strategy.</p>
+        <div class="why-photo-wrap">
+          <div class="shape-a"></div><div class="shape-b"></div><div class="shape-c"></div>
+          <div class="why-photo-inner"><img src="/images/brand/why-mbp-new.jpg" alt="Diverse team of professionals collaborating around a laptop in modern office"></div>
+        </div>
+      </div>
+      <div class="why-stats">
+        <div style="position:absolute;inset:-16px;opacity:0.6;border-radius:24px" class="brand-cross pointer-events-none" id="why-cross"></div>
+        <div class="why-stat"><div class="why-stat-value stat-gradient">61+</div><div class="why-stat-label">Countries Served</div></div>
+        <div class="why-stat"><div class="why-stat-value stat-gradient">99.7%</div><div class="why-stat-label">Compliance Rate</div></div>
+        <div class="why-stat"><div class="why-stat-value stat-gradient">48hr</div><div class="why-stat-label">Average Onboarding</div></div>
+        <div class="why-stat"><div class="why-stat-value stat-gradient">15K+</div><div class="why-stat-label">Workers Managed</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section class="how-section">
+  <div style="position:absolute;top:0;right:0;width:500px;height:500px;background:radial-gradient(circle,rgba(231,252,219,0.25),rgba(183,212,247,0.1),transparent);border-radius:50%;filter:blur(60px);transform:translate(25%,-25%)" class="pointer-events-none"></div>
+  <div style="position:absolute;bottom:0;left:0;width:400px;height:400px;background:radial-gradient(circle,rgba(231,252,219,0.15),transparent);border-radius:50%;filter:blur(60px);transform:translate(-25%,25%)" class="pointer-events-none"></div>
+  <svg style="position:absolute;bottom:0;left:0;width:100%;height:120px" class="pointer-events-none" viewBox="0 0 1200 120" fill="none" preserveAspectRatio="none"><path d="M0 60C200 10 400 100 600 60C800 20 1000 90 1200 50V120H0Z" fill="#b7d4f7" fill-opacity="0.08"/></svg>
+  <svg style="position:absolute;top:50%;right:-96px;transform:translateY(-50%);width:300px;height:500px" class="pointer-events-none animate-shape-drift" viewBox="0 0 300 500" fill="none"><rect x="50" y="50" width="200" height="400" rx="100" fill="#7393f9" fill-opacity="0.025"/></svg>
+
+  <div class="max-w-6xl px-6 section-padding" style="position:relative;z-index:10">
+    <p class="section-eyebrow eyebrow-accent" style="color:var(--emerald)">How It Works</p>
+    <h2 class="section-title" style="max-width:32rem;margin-bottom:40px">Simple to Start. Powerful to Scale.</h2>
+
+    <div class="how-grid">
+      <div class="how-step">
+        <div class="how-step-top">
+          <div class="how-step-icon"><img src="/images/icons/icon-question.svg" alt=""></div>
+          <span class="how-step-num brand-gradient-text">01</span>
+        </div>
+        <h3>Tell Us Your Workforce Mix</h3>
+        <p>Share your workforce requirements -whether you need to hire employees, engage contractors, or manage vendors. We help you choose the right model (or combination) for your strategy.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-step-top">
+          <div class="how-step-icon"><img src="/images/icons/icon-clipboard.svg" alt=""></div>
+          <span class="how-step-num brand-gradient-text">02</span>
+        </div>
+        <h3>We Handle the Complexity</h3>
+        <p>From compliance and payroll to classification and onboarding -we manage every detail. myBasePay assumes full liability so you can focus on your business, not administration.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-step-top">
+          <div class="how-step-icon"><img src="/images/icons/icon-payment.svg" alt=""></div>
+          <span class="how-step-num brand-gradient-text">03</span>
+        </div>
+        <h3>Scale with Confidence</h3>
+        <p>Expand into new markets, grow your contractor workforce, and add vendors -all through one platform. Real-time dashboards and dedicated support give you full visibility.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="testimonials-section">
+  <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:800px;height:600px;background:radial-gradient(circle,rgba(115,147,249,0.06),rgba(183,212,247,0.08),transparent);border-radius:50%;filter:blur(60px);transform:translate(-50%,-25%)" class="pointer-events-none"></div>
+  <div style="position:absolute;bottom:0;right:0;width:400px;height:400px;background:radial-gradient(circle,rgba(231,252,219,0.12),transparent);border-radius:50%;filter:blur(60px);transform:translate(25%,33%)" class="pointer-events-none"></div>
+  <svg style="position:absolute;top:-32px;left:-64px;width:350px;height:350px" class="pointer-events-none" viewBox="0 0 350 350" fill="none"><path d="M0 0C180 0 320 100 340 260C350 330 300 350 250 350L0 350Z" fill="#e7fcdb" fill-opacity="0.15"/></svg>
+  <svg style="position:absolute;top:48px;right:-32px;width:200px;height:200px" class="pointer-events-none animate-shape-drift" viewBox="0 0 200 200" fill="none"><circle cx="100" cy="100" r="80" fill="#7393f9" fill-opacity="0.06"/></svg>
+
+  <div class="max-w-6xl px-6 section-padding" style="position:relative;z-index:10">
+    <div style="max-width:48rem;margin:0 auto">
+      <p class="section-eyebrow eyebrow-accent eyebrow-accent-center" style="color:var(--emerald);text-align:center;margin-bottom:24px">What Our Clients Say</p>
+
+      <div class="testimonial-toggles">
+        <button class="testimonial-toggle active" onclick="switchTestimonial(0)">Staffing</button>
+        <button class="testimonial-toggle" onclick="switchTestimonial(1)">Enterprise</button>
+      </div>
+
+      <blockquote class="testimonial-quote" id="testimonial-quote">&ldquo;myBasePay transformed how we manage our contingent workforce. The compliance alone has saved us from costly misclassification risks.&rdquo;</blockquote>
+
+      <div class="testimonial-attribution">
+        <div class="testimonial-photo-wrap">
+          <div class="shape-a"></div><div class="shape-b"></div>
+          <div class="testimonial-photo"><img id="testimonial-photo" src="/images/brand/photo-4.jpg" alt="VP of Operations"></div>
+        </div>
+        <p class="testimonial-name" id="testimonial-name">VP of Operations</p>
+        <p class="testimonial-company" id="testimonial-company">National Staffing Agency</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CALCULATOR CTA ===== -->
+<section class="calc-section">
+  <div style="position:absolute;top:0;left:0;width:500px;height:500px;background:radial-gradient(circle,rgba(231,252,219,0.2),rgba(0,102,51,0.03),transparent);border-radius:50%;filter:blur(60px);transform:translate(-25%,-25%)" class="pointer-events-none"></div>
+  <div style="position:absolute;bottom:0;right:0;width:400px;height:400px;background:radial-gradient(circle,rgba(183,212,247,0.1),transparent);border-radius:50%;filter:blur(60px);transform:translate(25%,33%)" class="pointer-events-none"></div>
+  <svg style="position:absolute;top:50%;left:-64px;transform:translateY(-50%);width:400px;height:400px" class="pointer-events-none" viewBox="0 0 400 400" fill="none"><circle cx="200" cy="200" r="180" fill="#e7fcdb" fill-opacity="0.12"/></svg>
+
+  <div class="max-w-6xl px-6 section-padding" style="position:relative;z-index:10">
+    <p class="section-eyebrow eyebrow-accent" style="color:var(--emerald)">Free Tools</p>
+    <h2 class="section-title" style="max-width:36rem">Calculate Your Risk. Quantify Your Savings.</h2>
+    <p class="section-subtitle" style="margin-top:16px;margin-bottom:32px">Use our interactive calculators to understand your exposure and see the ROI of working with myBasePay.</p>
+
+    <div class="calc-grid">
+      <a href="/calculators/global-expansion" class="calc-card card-hover-gradient">
+        <div class="calc-card-top">
+          <div class="calc-card-icon icon-gradient-emerald"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 003 12c0-1.605.42-3.113 1.157-4.418"/></svg></div>
+          <span class="calc-tag" style="color:var(--emerald);background:rgba(231,252,219,0.6)">EOR</span>
+        </div>
+        <h3>Global Expansion Cost Calculator</h3>
+        <p>Entity Setup vs. EOR  - Compare Costs, Timelines, and Risk for Any Country.</p>
+        <span class="calc-card-link">Try it free &rarr;</span>
+      </a>
+      <a href="/calculators/misclassification-risk" class="calc-card card-hover-gradient">
+        <div class="calc-card-top">
+          <div class="calc-card-icon icon-gradient-emerald"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg></div>
+          <span class="calc-tag" style="color:var(--wisteria);background:rgba(183,212,247,0.3)">AOR</span>
+        </div>
+        <h3>Misclassification Risk Calculator</h3>
+        <p>Assess Your Contractor Workforce Risk and Calculate Financial Exposure.</p>
+        <span class="calc-card-link">Try it free &rarr;</span>
+      </a>
+      <a href="/calculators/spend-optimizer" class="calc-card card-hover-gradient">
+        <div class="calc-card-top">
+          <div class="calc-card-icon icon-gradient-emerald"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+          <span class="calc-tag" style="color:var(--marigold);background:rgba(255,191,0,0.1)">VOR</span>
+        </div>
+        <h3>Contingent Spend Optimizer</h3>
+        <p>Discover Hidden Savings in Your Vendor Network and Contingent Spend.</p>
+        <span class="calc-card-link">Try it free &rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PODCAST ===== -->
+<section class="podcast-section">
+  <div style="position:absolute;top:0;right:0;width:500px;height:500px;background:radial-gradient(circle,rgba(115,147,249,0.08),rgba(183,212,247,0.1),transparent);border-radius:50%;filter:blur(60px);transform:translate(25%,-25%)" class="pointer-events-none"></div>
+  <div style="position:absolute;bottom:0;left:0;width:400px;height:400px;background:radial-gradient(circle,rgba(183,212,247,0.1),transparent);border-radius:50%;filter:blur(60px);transform:translate(-25%,33%)" class="pointer-events-none"></div>
+  <svg style="position:absolute;top:50%;right:-80px;transform:translateY(-50%);width:450px;height:450px" class="pointer-events-none animate-shape-drift" viewBox="0 0 450 450" fill="none"><path d="M225 40C340 30 420 120 430 230C440 340 370 430 260 440C150 450 50 380 40 270C30 160 110 50 225 40Z" fill="#006633" fill-opacity="0.03"/></svg>
+  <svg style="position:absolute;bottom:-48px;left:-48px;width:300px;height:200px" class="pointer-events-none" viewBox="0 0 300 200" fill="none"><path d="M0 200C0 90 90 0 200 0L300 0L300 200Z" fill="#b7d4f7" fill-opacity="0.06"/></svg>
+
+  <div class="max-w-6xl px-6 section-padding">
+    <div class="podcast-grid">
+      <div>
+        <p class="section-eyebrow eyebrow-accent" style="color:var(--wisteria)">Leaders Unfiltered</p>
+        <h2 class="section-title">Real Conversations with Workforce Leaders</h2>
+        <p class="section-subtitle" style="margin-top:20px;margin-bottom:32px">Candid conversations with the people shaping the future of work. Compliance, strategy, innovation -no filter.</p>
+        <a href="/podcast" class="btn-gradient">Listen Now</a>
+      </div>
+      <div>
+        <div class="podcast-cover-wrap">
+          <div class="shape-a"></div><div class="shape-b"></div><div class="shape-c"></div>
+          <div class="podcast-cover-inner">
+            <img src="/images/brand/podcast-new.jpg" alt="Two professionals in candid conversation by a window">
+            <div class="podcast-cover-overlay"></div>
+            <div class="podcast-cover-badge">
+              <div class="podcast-play-btn"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+              <span class="podcast-cover-title">Leaders Unfiltered Podcast</span>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <a href="/podcast" class="podcast-ep">
+            <div class="podcast-ep-play brand-gradient-primary"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <span class="podcast-ep-title">The Future of Contingent Workforce Management</span>
+          </a>
+          <a href="/podcast" class="podcast-ep">
+            <div class="podcast-ep-play brand-gradient-primary"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <span class="podcast-ep-title">Navigating Worker Classification in 2025</span>
+          </a>
+          <a href="/podcast" class="podcast-ep">
+            <div class="podcast-ep-play brand-gradient-primary"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <span class="podcast-ep-title">Building a Resilient Workforce Strategy</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA SECTION ===== -->
+<section class="cta-section">
+  <div style="position:absolute;inset:0" class="brand-cross-dark pointer-events-none"></div>
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:500px;background:radial-gradient(circle,rgba(115,147,249,0.2),rgba(0,102,51,0.12),rgba(115,147,249,0.2));border-radius:50%;filter:blur(60px)" class="pointer-events-none"></div>
+  <div style="position:absolute;bottom:0;left:33%;width:400px;height:200px;background:linear-gradient(to top,rgba(0,102,51,0.08),transparent);border-radius:50%;filter:blur(60px)" class="pointer-events-none"></div>
+  <svg style="position:absolute;top:-80px;left:-64px;width:500px;height:500px" class="pointer-events-none" viewBox="0 0 500 500" fill="none"><path d="M0 0C250 0 450 150 480 380L500 500L0 500Z" fill="#ffffff" fill-opacity="0.015"/></svg>
+  <svg style="position:absolute;bottom:-64px;right:-80px;width:350px;height:300px" class="pointer-events-none animate-shape-drift" viewBox="0 0 350 300" fill="none"><rect x="50" y="50" width="250" height="200" rx="100" fill="#ffffff" fill-opacity="0.02"/></svg>
+
+  <div class="max-w-6xl px-6 section-padding" style="text-align:center;position:relative;z-index:10">
+    <h2 style="font-size:clamp(1.875rem,4vw,3rem);font-weight:900;color:#fff;margin-bottom:20px;line-height:1.15">Ready to Simplify Your Workforce?</h2>
+    <p style="color:rgba(255,255,255,0.6);font-size:16px;max-width:32rem;margin:0 auto 32px;line-height:1.6">See how myBasePay helps you hire compliantly, reduce costs, and scale with confidence.</p>
+    <a href="/demo/" class="btn-marigold btn-marigold-lg">Schedule a Demo</a>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="footer-top-line"></div>
+  <div style="position:absolute;top:0;right:0;width:400px;height:300px;background:radial-gradient(circle,rgba(115,147,249,0.05),transparent);border-radius:50%;filter:blur(60px);transform:translate(25%,-50%)" class="pointer-events-none"></div>
+  <div class="max-w-6xl px-6" style="position:relative;z-index:10">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="/images/brand/logo-white.svg" alt="myBasePay" style="height:32px;width:auto">
+          <p>Architects of the Flexible Workforce</p>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-title">Solutions</p>
+          <ul><li><a href="/solutions/eor">Employer of Record</a></li><li><a href="/solutions/aor">Agent of Record</a></li><li><a href="/solutions/vor">Vendor of Record</a></li></ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-title">Company</p>
+          <ul><li><a href="/about">About</a></li></ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-title">Resources</p>
+          <ul><li><a href="/blog">Blog</a></li><li><a href="/podcast">Podcast</a></li><li><a href="/news">News &amp; Press</a></li></ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-title">Tools</p>
+          <ul><li><a href="/calculators/misclassification-risk">Misclassification Calculator</a></li><li><a href="/calculators/global-expansion">Expansion Calculator</a></li><li><a href="/calculators/spend-optimizer">Spend Optimizer</a></li></ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2025 myBasePay. All rights reserved.</p>
+        <div class="footer-legal"><a href="/privacy-policy">Privacy</a><a href="/terms">Terms</a></div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+// Mobile menu
+function toggleMobile() {
+  var menu = document.getElementById('mobile-menu');
+  var menuIcon = document.getElementById('menu-icon');
+  var closeIcon = document.getElementById('close-icon');
+  var isOpen = menu.classList.contains('open');
+  menu.classList.toggle('open');
+  menuIcon.style.display = isOpen ? 'block' : 'none';
+  closeIcon.style.display = isOpen ? 'none' : 'block';
+}
+
+function toggleMobileSection(btn) {
+  var submenu = btn.nextElementSibling;
+  var isOpen = submenu.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.mobile-submenu').forEach(function(s) { s.classList.remove('open'); });
+  document.querySelectorAll('.mobile-menu-toggle').forEach(function(b) { b.classList.remove('expanded'); });
+  if (!isOpen) { submenu.classList.add('open'); btn.classList.add('expanded'); }
+}
+
+// Desktop dropdowns
+var activeDropdown = null;
+var dropdownTimeout = null;
+document.querySelectorAll('[data-dropdown]').forEach(function(item) {
+  var key = item.getAttribute('data-dropdown');
+  item.addEventListener('mouseenter', function() {
+    clearTimeout(dropdownTimeout);
+    if (activeDropdown && activeDropdown !== key) {
+      document.getElementById('dropdown-' + activeDropdown).classList.remove('open');
+    }
+    document.getElementById('dropdown-' + key).classList.add('open');
+    activeDropdown = key;
+  });
+  item.addEventListener('mouseleave', function() {
+    dropdownTimeout = setTimeout(function() {
+      if (activeDropdown) {
+        document.getElementById('dropdown-' + activeDropdown).classList.remove('open');
+        activeDropdown = null;
+      }
+    }, 150);
+  });
+});
+document.querySelectorAll('.dropdown-panel').forEach(function(panel) {
+  panel.addEventListener('mouseenter', function() { clearTimeout(dropdownTimeout); });
+  panel.addEventListener('mouseleave', function() {
+    dropdownTimeout = setTimeout(function() {
+      if (activeDropdown) {
+        document.getElementById('dropdown-' + activeDropdown).classList.remove('open');
+        activeDropdown = null;
+      }
+    }, 150);
+  });
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && activeDropdown) {
+    document.getElementById('dropdown-' + activeDropdown).classList.remove('open');
+    activeDropdown = null;
+  }
+});
+
+// Animated stat counters
+var statObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting && !entry.target.dataset.animated) {
+      entry.target.dataset.animated = 'true';
+      var target = parseInt(entry.target.dataset.target);
+      var suffix = entry.target.dataset.suffix || '';
+      var duration = 1500;
+      var start = performance.now();
+      function animate(now) {
+        var elapsed = now - start;
+        var progress = Math.min(elapsed / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        entry.target.textContent = Math.floor(eased * target) + suffix;
+        if (progress < 1) requestAnimationFrame(animate);
+      }
+      requestAnimationFrame(animate);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.stat-value[data-target]').forEach(function(el) {
+  statObserver.observe(el);
+});
+
+// Testimonial switcher
+var testimonials = [
+  { quote: 'myBasePay transformed how we manage our contingent workforce. The compliance alone has saved us from costly misclassification risks.', name: 'VP of Operations', company: 'National Staffing Agency', photo: '/images/brand/photo-4.jpg' },
+  { quote: 'We consolidated three vendors into one platform. The visibility into spend and compliance has been a complete game-changer for our procurement team.', name: 'Director of Procurement', company: 'Fortune 500 Enterprise', photo: '/images/brand/testimonial-male.jpg' }
+];
+function switchTestimonial(idx) {
+  var t = testimonials[idx];
+  document.getElementById('testimonial-quote').innerHTML = '&ldquo;' + t.quote + '&rdquo;';
+  document.getElementById('testimonial-name').textContent = t.name;
+  document.getElementById('testimonial-company').textContent = t.company;
+  document.getElementById('testimonial-photo').src = t.photo;
+  document.getElementById('testimonial-photo').alt = t.name;
+  document.querySelectorAll('.testimonial-toggle').forEach(function(btn, i) {
+    btn.classList.toggle('active', i === idx);
+  });
+}
+
+// Hide desktop-only elements on mobile
+function handleResize() {
+  var w = window.innerWidth;
+  var el1 = document.getElementById('why-line-grid');
+  var el2 = document.getElementById('why-cross');
+  if (el1) el1.style.display = w >= 1024 ? 'block' : 'none';
+  if (el2) el2.style.display = w >= 640 ? 'block' : 'none';
+}
+handleResize();
+window.addEventListener('resize', handleResize);
+
+// Block all outbound navigation  - homepage only mode
+document.addEventListener('click', function(e) {
+  var link = e.target.closest('a');
+  if (!link) return;
+  var href = link.getAttribute('href');
+  if (!href) return;
+  // Allow same-page anchors (#solutions etc) and javascript:void
+  if (href.charAt(0) === '#' || href.startsWith('javascript:')) return;
+  // Block everything else
+  e.preventDefault();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,2366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>myBasePay | Your Workforce. Fully Managed.</title>
+<meta name="description" content="One platform for EOR, AOR, and VOR. Built by workforce compliance experts to help you hire compliantly, control costs, and scale your flexible workforce with confidence.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: #121631;
+  line-height: 1.6;
+  overflow-x: hidden;
+  background: #ffffff;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.2s ease;
+}
+
+a:hover {
+  opacity: 0.85;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* ============================================================
+   BRAND TOKENS
+   ============================================================ */
+:root {
+  --emerald: #006633;
+  --prussian: #121631;
+  --wisteria: #7393f9;
+  --alabaster: #e8e8e8;
+  --frost: #e7fcdb;
+  --icy: #b7d4f7;
+  --marigold: #ffbf00;
+  --white-smoke: #f2f2f2;
+  --cool-steel: #afafaf;
+  --charcoal: #0c0c0c;
+
+  --grad-primary: linear-gradient(135deg, #7393f9, #006633);
+  --grad-secondary: linear-gradient(135deg, #b7d4f7, #e7fcdb);
+  --grad-accent: linear-gradient(135deg, #e7fcdb, #b7d4f7, #ffbf00);
+}
+
+/* ============================================================
+   CONTAINER
+   ============================================================ */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ============================================================
+   BRAND SHAPES (emerald rounded rectangles)
+   ============================================================ */
+.brand-shape {
+  position: absolute;
+  background: var(--emerald);
+  border-radius: 12px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ============================================================
+   GRAPH / CROSS PATTERN (localised accent)
+   ============================================================ */
+.graph-patch {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='20' y1='16' x2='20' y2='24' stroke='%23e8e8e8' stroke-width='1'/%3E%3Cline x1='16' y1='20' x2='24' y2='20' stroke='%23e8e8e8' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 40px 40px;
+  opacity: 0.6;
+}
+
+.graph-patch-green {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='20' y1='16' x2='20' y2='24' stroke='%23006633' stroke-width='1' opacity='0.15'/%3E%3Cline x1='16' y1='20' x2='24' y2='20' stroke='%23006633' stroke-width='1' opacity='0.15'/%3E%3C/svg%3E");
+  background-size: 40px 40px;
+  opacity: 0.5;
+}
+
+/* ============================================================
+   TYPOGRAPHY UTILITIES
+   ============================================================ */
+.gradient-text {
+  background: var(--grad-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.eyebrow {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.section-heading {
+  font-size: 2.75rem;
+  font-weight: 900;
+  line-height: 1.15;
+  margin-bottom: 20px;
+  color: var(--prussian);
+}
+
+.section-sub {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  max-width: 680px;
+  font-weight: 300;
+  color: rgba(18, 22, 49, 0.65);
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 36px;
+  border-radius: 100px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+  font-family: 'Roboto', sans-serif;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  opacity: 1;
+}
+
+.btn-marigold {
+  background: var(--marigold);
+  color: var(--prussian);
+  border-color: var(--marigold);
+}
+
+.btn-marigold:hover {
+  box-shadow: 0 8px 30px rgba(255, 191, 0, 0.35);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--prussian);
+  border-color: rgba(18, 22, 49, 0.2);
+}
+
+.btn-outline:hover {
+  border-color: var(--prussian);
+  background: rgba(18, 22, 49, 0.04);
+}
+
+.btn-outline-white {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255,255,255,0.4);
+}
+
+.btn-outline-white:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: #fff;
+}
+
+/* ============================================================
+   UTILITY BAR
+   ============================================================ */
+/* Utility bar removed  - logins now inline in header */
+
+/* ============================================================
+   HEADER / NAV  (light, frosted glass)
+   ============================================================ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(18, 22, 49, 0.06);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.site-header.scrolled {
+  box-shadow: 0 2px 24px rgba(18, 22, 49, 0.06);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  height: 72px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-logo img {
+  height: 32px;
+  width: auto;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-links a {
+  color: rgba(18, 22, 49, 0.7);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--prussian);
+  opacity: 1;
+}
+
+.header-login {
+  font-size: 0.75rem !important;
+  color: rgba(18, 22, 49, 0.45) !important;
+  font-weight: 500;
+}
+
+.header-login:first-of-type {
+  margin-left: 24px;
+  padding-left: 28px;
+  border-left: 1px solid rgba(18, 22, 49, 0.08);
+}
+
+.header-login:hover {
+  color: var(--prussian) !important;
+}
+
+.header-login-sep {
+  color: rgba(18, 22, 49, 0.15);
+  font-size: 0.75rem;
+}
+
+.nav-cta {
+  margin-left: 8px;
+}
+
+/* Mobile menu button */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 1002;
+}
+
+.mobile-menu-btn span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--prussian);
+  margin: 6px 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.mobile-menu-btn.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.mobile-menu-btn.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-btn.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ============================================================
+   MOBILE NAV OVERLAY
+   ============================================================ */
+.mobile-nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.mobile-nav-overlay.open {
+  display: flex;
+}
+
+.mobile-nav-overlay a {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--prussian);
+}
+
+.mobile-nav-overlay a:hover {
+  color: var(--emerald);
+}
+
+.mobile-nav-overlay .btn-marigold {
+  margin-top: 16px;
+}
+
+/* ============================================================
+   HERO  (lovable.dev inspired  - light, text-focused, animated mesh)
+   ============================================================ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+/* ---- Animated gradient mesh blobs ---- */
+.hero-mesh {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.mesh-blob {
+  position: absolute;
+  border-radius: 50%;
+  will-change: transform;
+}
+
+.mesh-blob-1 {
+  width: 550px;
+  height: 550px;
+  background: rgba(115, 147, 249, 0.5);
+  filter: blur(100px);
+  top: -8%;
+  right: -5%;
+  animation: meshFloat1 20s ease-in-out infinite;
+}
+
+.mesh-blob-2 {
+  width: 450px;
+  height: 450px;
+  background: rgba(231, 252, 219, 0.6);
+  filter: blur(90px);
+  bottom: -5%;
+  left: -8%;
+  animation: meshFloat2 25s ease-in-out infinite;
+}
+
+.mesh-blob-3 {
+  width: 380px;
+  height: 380px;
+  background: rgba(183, 212, 247, 0.55);
+  filter: blur(110px);
+  top: 40%;
+  left: 30%;
+  animation: meshFloat3 18s ease-in-out infinite;
+}
+
+.mesh-blob-4 {
+  width: 300px;
+  height: 300px;
+  background: rgba(0, 102, 51, 0.22);
+  filter: blur(80px);
+  top: 10%;
+  left: 10%;
+  animation: meshFloat4 22s ease-in-out infinite;
+}
+
+@keyframes meshFloat1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(-60px, 40px) scale(1.05); }
+  50% { transform: translate(-30px, 80px) scale(0.95); }
+  75% { transform: translate(40px, 30px) scale(1.08); }
+}
+
+@keyframes meshFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(50px, -30px) scale(1.08); }
+  50% { transform: translate(80px, -60px) scale(0.92); }
+  75% { transform: translate(20px, -40px) scale(1.04); }
+}
+
+@keyframes meshFloat3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-40px, -50px) scale(1.1); }
+  66% { transform: translate(50px, 30px) scale(0.9); }
+}
+
+@keyframes meshFloat4 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  20% { transform: translate(30px, 50px) scale(1.06); }
+  50% { transform: translate(70px, 20px) scale(0.94); }
+  80% { transform: translate(-20px, 40px) scale(1.02); }
+}
+
+/* ---- Cursor-follow orb ---- */
+.hero-orb {
+  position: fixed;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(115, 147, 249, 0.2), rgba(231, 252, 219, 0.12) 50%, transparent 75%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  will-change: transform;
+  transition: opacity 0.5s ease;
+}
+
+/* ---- Hero content ---- */
+.hero-content {
+  position: relative;
+  z-index: 3;
+  padding: 120px 0 80px;
+  width: 100%;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 4.75rem;
+  font-weight: 900;
+  line-height: 1.05;
+  color: var(--prussian);
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+}
+
+.hero h1 .line-gradient {
+  display: block;
+  background: var(--grad-primary);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmerGradient 4s ease-in-out infinite;
+}
+
+@keyframes shimmerGradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.hero-sub {
+  font-size: 1.25rem;
+  color: rgba(18, 22, 49, 0.6);
+  line-height: 1.75;
+  max-width: 620px;
+  font-weight: 300;
+  margin: 0 auto 32px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+/* Brand shapes around CTA */
+.hero-buttons .brand-shape-1 {
+  position: absolute;
+  top: -14px;
+  left: calc(50% - 160px);
+  width: 40px;
+  height: 32px;
+  background: var(--emerald);
+  opacity: 0.55;
+  border-radius: 12px;
+  z-index: 0;
+}
+
+.hero-buttons .brand-shape-2 {
+  position: absolute;
+  bottom: -12px;
+  left: calc(50% - 50px);
+  width: 26px;
+  height: 22px;
+  background: var(--emerald);
+  opacity: 0.35;
+  border-radius: 12px;
+  z-index: 0;
+}
+
+/* ICP Selector Cards (frosted glass) */
+.icp-cards {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.icp-card {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(18, 22, 49, 0.08);
+  border-radius: 16px;
+  padding: 24px 28px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  max-width: 340px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.icp-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.icp-card:hover {
+  border-color: rgba(115, 147, 249, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(18, 22, 49, 0.06);
+}
+
+.icp-card-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--emerald);
+  margin-bottom: 6px;
+}
+
+.icp-card-title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--prussian);
+  line-height: 1.4;
+}
+
+/* Hero stats bar */
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  padding-top: 36px;
+  border-top: 1px solid rgba(18, 22, 49, 0.06);
+  max-width: 800px;
+  margin: 100px auto 0;
+}
+
+.hero-stat-number {
+  font-size: 2.25rem;
+  font-weight: 900;
+  background: var(--grad-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 4px;
+}
+
+.hero-stat-label {
+  font-size: 0.8125rem;
+  color: rgba(18, 22, 49, 0.45);
+  font-weight: 400;
+}
+
+/* ============================================================
+   TRUST BAR
+   ============================================================ */
+.trust-bar {
+  background: var(--white-smoke);
+  padding: 48px 0;
+  border-top: 1px solid rgba(18, 22, 49, 0.04);
+  border-bottom: 1px solid rgba(18, 22, 49, 0.04);
+}
+
+.trust-bar-label {
+  text-align: center;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--cool-steel);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+
+.trust-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.trust-logo-item {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: rgba(18, 22, 49, 0.18);
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   SOLUTIONS
+   ============================================================ */
+.solutions {
+  background: #ffffff;
+  padding: 140px 0;
+  position: relative;
+}
+
+.solutions-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.solutions-header .eyebrow {
+  color: var(--emerald);
+}
+
+.solutions-header .section-sub {
+  margin: 0 auto;
+}
+
+.solutions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  position: relative;
+}
+
+.solution-card {
+  background: #ffffff;
+  border: 1px solid rgba(18, 22, 49, 0.07);
+  border-radius: 16px;
+  padding: 40px 32px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
+}
+
+.solution-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(18, 22, 49, 0.08);
+  border-color: rgba(115, 147, 249, 0.2);
+}
+
+.solution-card-icon-wrap {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 24px;
+}
+
+.solution-card-icon-wrap .brand-shape {
+  width: 36px;
+  height: 28px;
+  opacity: 0.35;
+  top: -6px;
+  right: -10px;
+}
+
+.solution-card-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--grad-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.solution-card-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.solution-card-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--wisteria);
+  margin-bottom: 8px;
+}
+
+.solution-card h3 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--prussian);
+  margin-bottom: 12px;
+}
+
+.solution-card p {
+  font-size: 0.9375rem;
+  color: rgba(18, 22, 49, 0.6);
+  line-height: 1.65;
+  margin-bottom: 20px;
+}
+
+.solution-card-link {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--emerald);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.solution-card-link::after {
+  content: '\2192';
+  transition: transform 0.2s ease;
+}
+
+.solution-card:hover .solution-card-link::after {
+  transform: translateX(4px);
+}
+
+/* ============================================================
+   WHY MBP
+   ============================================================ */
+.why-mbp {
+  background: var(--white-smoke);
+  padding: 140px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.why-mbp-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+
+.why-mbp .eyebrow {
+  color: var(--wisteria);
+}
+
+.why-mbp .section-sub {
+  margin-bottom: 40px;
+}
+
+/* Photo with brand shapes */
+.why-mbp-image-wrap {
+  position: relative;
+}
+
+.why-mbp-image-wrap .brand-shape.s1 {
+  width: 80px;
+  height: 60px;
+  opacity: 0.5;
+  top: -20px;
+  right: -16px;
+}
+
+.why-mbp-image-wrap .brand-shape.s2 {
+  width: 50px;
+  height: 70px;
+  opacity: 0.35;
+  bottom: -18px;
+  left: -14px;
+}
+
+.why-mbp-image-wrap .brand-shape.s3 {
+  width: 40px;
+  height: 50px;
+  opacity: 0.25;
+  top: 40%;
+  left: -20px;
+}
+
+.why-mbp-image {
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.why-mbp-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.why-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.why-stat-card {
+  background: #ffffff;
+  border: 1px solid rgba(18, 22, 49, 0.06);
+  border-radius: 14px;
+  padding: 24px;
+  text-align: center;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.why-stat-card:hover {
+  box-shadow: 0 8px 24px rgba(18, 22, 49, 0.06);
+  transform: translateY(-2px);
+}
+
+.why-stat-number {
+  font-size: 1.75rem;
+  font-weight: 900;
+  background: var(--grad-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 4px;
+}
+
+.why-stat-label {
+  font-size: 0.8125rem;
+  color: rgba(18, 22, 49, 0.5);
+  font-weight: 500;
+}
+
+/* ============================================================
+   HOW IT WORKS
+   ============================================================ */
+.how-it-works {
+  background: #ffffff;
+  padding: 140px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle gradient accent at top */
+.how-it-works::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(115, 147, 249, 0.2), rgba(0, 102, 51, 0.15), transparent);
+}
+
+.how-it-works-header {
+  text-align: center;
+  margin-bottom: 72px;
+}
+
+.how-it-works-header .eyebrow {
+  color: var(--emerald);
+}
+
+.how-it-works-header .section-sub {
+  margin: 0 auto;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  position: relative;
+}
+
+/* Connecting line between steps */
+.steps-grid::before {
+  content: '';
+  position: absolute;
+  top: 44px;
+  left: calc(16.66% + 28px);
+  right: calc(16.66% + 28px);
+  height: 2px;
+  background: linear-gradient(90deg, rgba(115, 147, 249, 0.2), rgba(0, 102, 51, 0.15));
+}
+
+.step-card {
+  text-align: center;
+  position: relative;
+}
+
+.step-number {
+  font-size: 3rem;
+  font-weight: 900;
+  background: var(--grad-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+.step-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--white-smoke);
+  border: 1px solid rgba(18, 22, 49, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.step-icon img {
+  width: 24px;
+  height: 24px;
+  opacity: 0.7;
+}
+
+.step-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--prussian);
+  margin-bottom: 12px;
+}
+
+.step-card p {
+  font-size: 0.9375rem;
+  color: rgba(18, 22, 49, 0.55);
+  line-height: 1.65;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   TESTIMONIALS
+   ============================================================ */
+.testimonials {
+  background: linear-gradient(160deg, var(--white-smoke) 0%, rgba(0, 102, 51, 0.06) 40%, rgba(0, 102, 51, 0.10) 70%, var(--white-smoke) 100%);
+  padding: 140px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle mesh background for testimonials */
+.testimonials::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: rgba(0, 102, 51, 0.12);
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.testimonials::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  left: -80px;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: rgba(0, 102, 51, 0.08);
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.testimonials-header {
+  text-align: center;
+  margin-bottom: 48px;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonials-header .eyebrow {
+  color: var(--emerald);
+}
+
+.testimonial-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 48px;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial-toggle-btn {
+  padding: 12px 32px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  border: 2px solid rgba(18, 22, 49, 0.1);
+  background: transparent;
+  color: rgba(18, 22, 49, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Roboto', sans-serif;
+}
+
+.testimonial-toggle-btn:first-child {
+  border-radius: 12px 0 0 12px;
+}
+
+.testimonial-toggle-btn:last-child {
+  border-radius: 0 12px 12px 0;
+}
+
+.testimonial-toggle-btn.active {
+  background: var(--prussian);
+  color: #fff;
+  border-color: var(--prussian);
+}
+
+.testimonial-card {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(18, 22, 49, 0.06);
+  border-radius: 20px;
+  padding: 56px;
+  max-width: 800px;
+  margin: 0 auto;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: none;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial-card.active {
+  display: block;
+}
+
+.testimonial-quote {
+  font-size: 1.375rem;
+  font-weight: 300;
+  color: var(--prussian);
+  line-height: 1.7;
+  margin-bottom: 32px;
+  font-style: italic;
+  position: relative;
+  padding-left: 28px;
+}
+
+.testimonial-quote::before {
+  content: '\201C';
+  position: absolute;
+  left: 0;
+  top: -4px;
+  font-size: 3rem;
+  font-weight: 900;
+  background: var(--grad-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.testimonial-author-photo-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.testimonial-author-photo-wrap .brand-shape {
+  width: 28px;
+  height: 22px;
+  opacity: 0.4;
+  top: -8px;
+  right: -8px;
+}
+
+.testimonial-author-photo {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(115, 147, 249, 0.2);
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial-author-name {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--prussian);
+}
+
+.testimonial-author-title {
+  font-size: 0.8125rem;
+  color: rgba(18, 22, 49, 0.5);
+}
+
+/* ============================================================
+   CALCULATORS
+   ============================================================ */
+.calculators {
+  background: #ffffff;
+  padding: 140px 0;
+  position: relative;
+}
+
+.calculators-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.calculators-header .eyebrow {
+  color: var(--wisteria);
+}
+
+.calculators-header .section-sub {
+  margin: 0 auto;
+}
+
+.calculators-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.calc-card {
+  background: var(--white-smoke);
+  border-radius: 16px;
+  padding: 40px 32px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  border: 1px solid transparent;
+  position: relative;
+}
+
+.calc-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(18, 22, 49, 0.06);
+  border-color: rgba(18, 22, 49, 0.06);
+}
+
+.calc-card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.calc-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.calc-card-badge {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  border-radius: 100px;
+}
+
+.calc-card-badge.eor { background: rgba(115, 147, 249, 0.12); color: var(--wisteria); }
+.calc-card-badge.aor { background: rgba(0, 102, 51, 0.08); color: var(--emerald); }
+.calc-card-badge.vor { background: rgba(255, 191, 0, 0.12); color: #b38600; }
+
+.calc-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--prussian);
+  margin-bottom: 12px;
+}
+
+.calc-card p {
+  font-size: 0.9375rem;
+  color: rgba(18, 22, 49, 0.55);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.calc-card-link {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--emerald);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.calc-card-link::after {
+  content: '\2192';
+  transition: transform 0.2s ease;
+}
+
+.calc-card:hover .calc-card-link::after {
+  transform: translateX(4px);
+}
+
+/* ============================================================
+   PODCAST
+   ============================================================ */
+.podcast {
+  background: var(--white-smoke);
+  padding: 140px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle gradient accent */
+.podcast::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(115, 147, 249, 0.15), rgba(231, 252, 219, 0.2), transparent);
+}
+
+.podcast-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.podcast .eyebrow {
+  color: var(--emerald);
+}
+
+.podcast .section-sub {
+  margin-bottom: 32px;
+}
+
+.podcast-episodes {
+  margin-bottom: 36px;
+}
+
+.podcast-episode {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(18, 22, 49, 0.06);
+}
+
+.podcast-episode:last-child {
+  border-bottom: none;
+}
+
+.podcast-episode-play {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(18, 22, 49, 0.04);
+  border: 1px solid rgba(18, 22, 49, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+.podcast-episode-play:hover {
+  background: rgba(0, 102, 51, 0.08);
+}
+
+.podcast-episode-play svg {
+  width: 14px;
+  height: 14px;
+  margin-left: 2px;
+}
+
+.podcast-episode-title {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: rgba(18, 22, 49, 0.7);
+}
+
+/* Podcast image with brand shapes */
+.podcast-image-wrap {
+  position: relative;
+}
+
+.podcast-image-wrap .brand-shape.s1 {
+  width: 70px;
+  height: 50px;
+  opacity: 0.45;
+  top: -16px;
+  right: -12px;
+}
+
+.podcast-image-wrap .brand-shape.s2 {
+  width: 45px;
+  height: 60px;
+  opacity: 0.3;
+  bottom: -14px;
+  left: -10px;
+}
+
+.podcast-image {
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.podcast-image img {
+  width: 100%;
+  border-radius: 16px;
+}
+
+.podcast-listen-btn-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.podcast-listen-btn-wrap .brand-shape.s1 {
+  width: 38px;
+  height: 30px;
+  opacity: 0.5;
+  top: -10px;
+  left: -14px;
+}
+
+.podcast-listen-btn-wrap .brand-shape.s2 {
+  width: 26px;
+  height: 32px;
+  opacity: 0.3;
+  bottom: -8px;
+  right: -10px;
+}
+
+/* ============================================================
+   CTA SECTION
+   ============================================================ */
+.cta-section {
+  background: linear-gradient(135deg, #7393f9 0%, #006633 60%, #004d26 100%);
+  padding: 140px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glow effect */
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 191, 0, 0.12), transparent 70%);
+  pointer-events: none;
+}
+
+.cta-section .section-heading {
+  color: #fff;
+  font-size: 3.25rem;
+  margin-bottom: 20px;
+}
+
+.cta-section .section-sub {
+  color: rgba(255,255,255,0.8);
+  margin: 0 auto 44px;
+  text-align: center;
+}
+
+.cta-btn-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.cta-btn-wrap .brand-shape.s1 {
+  width: 44px;
+  height: 36px;
+  opacity: 0.5;
+  top: -14px;
+  left: -18px;
+}
+
+.cta-btn-wrap .brand-shape.s2 {
+  width: 32px;
+  height: 40px;
+  opacity: 0.35;
+  bottom: -12px;
+  right: -14px;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer {
+  background: #0a0e20;
+  padding: 80px 0 0;
+  color: rgba(255,255,255,0.6);
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 60px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.footer-brand img {
+  height: 28px;
+  margin-bottom: 16px;
+}
+
+.footer-tagline {
+  font-size: 0.9375rem;
+  color: rgba(255,255,255,0.4);
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.footer-col h4 {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 20px;
+}
+
+.footer-col ul li {
+  margin-bottom: 12px;
+}
+
+.footer-col ul li a {
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.5);
+  font-weight: 400;
+  transition: color 0.2s ease;
+}
+
+.footer-col ul li a:hover {
+  color: #fff;
+  opacity: 1;
+}
+
+.footer-bottom {
+  padding: 24px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8125rem;
+  color: rgba(255,255,255,0.25);
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-legal-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-legal-links a {
+  color: rgba(255,255,255,0.25);
+  transition: color 0.2s ease;
+}
+
+.footer-legal-links a:hover {
+  color: rgba(255,255,255,0.6);
+  opacity: 1;
+}
+
+/* ============================================================
+   SCROLL REVEAL ANIMATION
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-stagger.visible > *:nth-child(1) { transition-delay: 0s; }
+.reveal-stagger.visible > *:nth-child(2) { transition-delay: 0.08s; }
+.reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.16s; }
+.reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.24s; }
+.reveal-stagger.visible > *:nth-child(5) { transition-delay: 0.32s; }
+.reveal-stagger.visible > *:nth-child(6) { transition-delay: 0.4s; }
+
+.reveal-stagger.visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1024px) {
+  .hero h1 {
+    font-size: 3.75rem;
+  }
+
+  .hero-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .solutions-grid,
+  .calculators-grid,
+  .steps-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .steps-grid::before {
+    display: none;
+  }
+
+  .why-mbp-inner,
+  .podcast-inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .section-heading {
+    font-size: 2.25rem;
+  }
+
+  .cta-section .section-heading {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  .hero h1 {
+    font-size: 2.75rem;
+  }
+
+  .hero-content {
+    padding: 120px 0 60px;
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .hero-stat-number {
+    font-size: 1.75rem;
+  }
+
+  .solutions-grid,
+  .calculators-grid,
+  .steps-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .icp-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .icp-card {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .testimonial-card {
+    padding: 32px 24px;
+  }
+
+  .testimonial-quote {
+    font-size: 1.125rem;
+  }
+
+  .section-heading {
+    font-size: 2rem;
+  }
+
+  .cta-section .section-heading {
+    font-size: 2rem;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .why-stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .podcast-image-wrap {
+    order: -1;
+  }
+
+  .hero-orb {
+    display: none;
+  }
+
+  .mesh-blob { opacity: 0.5; }
+
+  .solutions,
+  .why-mbp,
+  .how-it-works,
+  .testimonials,
+  .calculators,
+  .podcast,
+  .cta-section {
+    padding: 100px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 2.25rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .why-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header-login, .header-login-sep {
+    display: none;
+  }
+
+  .mesh-blob {
+    display: none;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     HEADER / NAV  (light frosted glass)
+     ============================================================ -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="/" class="header-logo">
+      <img src="/images/brand/logo-light.svg" alt="myBasePay" />
+    </a>
+    <nav class="nav-links">
+      <a href="/solutions/eor/">Solutions</a>
+      <a href="/about/">About</a>
+      <a href="/calculators/misclassification-risk/">Tools</a>
+      <a href="/blog/">Resources</a>
+      <a href="#" class="header-login">Member Login</a>
+      <span class="header-login-sep">|</span>
+      <a href="#" class="header-login">Worker Login</a>
+      <a href="/demo/" class="btn btn-marigold nav-cta" style="padding: 10px 24px; font-size: 0.8125rem;">Schedule a Demo</a>
+    </nav>
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Nav Overlay -->
+<div class="mobile-nav-overlay" id="mobileNavOverlay">
+  <a href="/solutions/eor/">Solutions</a>
+  <a href="/about/">About</a>
+  <a href="/calculators/misclassification-risk/">Tools</a>
+  <a href="/blog/">Resources</a>
+  <a href="/demo/" class="btn btn-marigold">Schedule a Demo</a>
+</div>
+
+<!-- ============================================================
+     HERO  (lovable.dev inspired)
+     ============================================================ -->
+<section class="hero" id="heroSection">
+  <!-- Animated gradient mesh blobs -->
+  <div class="hero-mesh">
+    <div class="mesh-blob mesh-blob-1"></div>
+    <div class="mesh-blob mesh-blob-2"></div>
+    <div class="mesh-blob mesh-blob-3"></div>
+    <div class="mesh-blob mesh-blob-4"></div>
+  </div>
+
+  <!-- Cursor-follow orb -->
+  <div class="hero-orb" id="heroOrb"></div>
+
+  <!-- Graph pattern patch (localised accent) -->
+  <div class="graph-patch" style="width: 200px; height: 200px; bottom: 60px; right: 40px; opacity: 0.35;"></div>
+
+  <div class="hero-content container">
+    <h1>
+      Your Workforce.
+      <span class="line-gradient">Fully Managed.</span>
+    </h1>
+    <p class="hero-sub">One platform for EOR, AOR, and VOR. Built by workforce compliance experts to help you hire compliantly, control costs, and scale your flexible workforce with confidence.</p>
+    <div class="icp-cards">
+      <div class="icp-card">
+        <div class="icp-card-icon" style="background: rgba(0,102,51,0.08);">
+          <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#006633" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
+        </div>
+        <div>
+          <div class="icp-card-label">Staffing Agency</div>
+          <div class="icp-card-title">EOR, AOR &amp; Compliance for Your Clients</div>
+        </div>
+      </div>
+      <div class="icp-card">
+        <div class="icp-card-icon" style="background: rgba(115,147,249,0.08);">
+          <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#7393f9" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21"/></svg>
+        </div>
+        <div>
+          <div class="icp-card-label">Enterprise</div>
+          <div class="icp-card-title">Workforce Management at Scale</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-buttons">
+      <a href="/demo/" class="btn btn-marigold">Schedule a Demo</a>
+      <a href="#" class="btn btn-outline">Explore Solutions</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-number">61+</div>
+        <div class="hero-stat-label">Countries Served</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">15K+</div>
+        <div class="hero-stat-label">Workers Managed</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">99.7%</div>
+        <div class="hero-stat-label">Compliance Rate</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">48hr</div>
+        <div class="hero-stat-label">Avg. Onboarding</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TRUST BAR
+     ============================================================ -->
+<section class="trust-bar reveal">
+  <div class="container">
+    <div class="trust-bar-label">Trusted by 200+ Companies</div>
+    <div class="trust-logos">
+      <div class="trust-logo-item">Enterprise Co.</div>
+      <div class="trust-logo-item">StaffPro</div>
+      <div class="trust-logo-item">GlobalHR</div>
+      <div class="trust-logo-item">TechForce</div>
+      <div class="trust-logo-item">MedStaff</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SOLUTIONS
+     ============================================================ -->
+<section class="solutions" id="solutions">
+  <!-- Localised graph patch accent -->
+  <div class="graph-patch" style="width: 240px; height: 200px; top: 80px; left: -40px; opacity: 0.3;"></div>
+
+  <div class="container">
+    <div class="solutions-header reveal">
+      <div class="eyebrow">Solutions</div>
+      <h2 class="section-heading">Every Workforce Need. One Platform.</h2>
+      <p class="section-sub">Contingent workforce management isn't just about filling roles -- it's about building a structure that balances cost, compliance, and scalability.</p>
+    </div>
+    <div class="solutions-grid reveal-stagger">
+      <!-- EOR Card -->
+      <div class="solution-card">
+        <div class="solution-card-icon-wrap">
+          <div class="brand-shape" style="width: 36px; height: 28px; opacity: 0.35; top: -6px; right: -10px;"></div>
+          <div class="solution-card-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg>
+          </div>
+        </div>
+        <div class="solution-card-tag">EOR</div>
+        <h3>Employer of Record</h3>
+        <p>We become the legal employer for your workforce, handling payroll, benefits, taxes, and compliance across all 50 states and 61+ countries -- so you can focus on your business.</p>
+        <a href="#" class="solution-card-link">Learn More</a>
+      </div>
+      <!-- AOR Card -->
+      <div class="solution-card">
+        <div class="solution-card-icon-wrap">
+          <div class="brand-shape" style="width: 36px; height: 28px; opacity: 0.35; top: -6px; right: -10px;"></div>
+          <div class="solution-card-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15a2.25 2.25 0 012.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z"/></svg>
+          </div>
+        </div>
+        <div class="solution-card-tag">AOR</div>
+        <h3>Agent of Record</h3>
+        <p>We manage your independent contractor relationships end-to-end -- classification, onboarding, contracts, payments, and ongoing compliance monitoring to eliminate misclassification risk.</p>
+        <a href="#" class="solution-card-link">Learn More</a>
+      </div>
+      <!-- VOR Card -->
+      <div class="solution-card">
+        <div class="solution-card-icon-wrap">
+          <div class="brand-shape" style="width: 36px; height: 28px; opacity: 0.35; top: -6px; right: -10px;"></div>
+          <div class="solution-card-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21"/></svg>
+          </div>
+        </div>
+        <div class="solution-card-tag">VOR</div>
+        <h3>Vendor of Record</h3>
+        <p>We consolidate and manage your staffing vendor relationships, creating a single point of accountability for spend management, compliance, and performance tracking.</p>
+        <a href="#" class="solution-card-link">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHY MBP
+     ============================================================ -->
+<section class="why-mbp" id="why-mbp">
+  <!-- Localised graph patch accent -->
+  <div class="graph-patch-green" style="width: 180px; height: 180px; top: 100px; right: 60px; opacity: 0.35;"></div>
+
+  <div class="container">
+    <div class="why-mbp-inner">
+      <div class="why-mbp-content reveal">
+        <div class="eyebrow">Why myBasePay</div>
+        <h2 class="section-heading">Built for Compliance. Designed for Growth.</h2>
+        <p class="section-sub">myBasePay is built by workforce compliance experts. We combine deep expertise with purpose-built technology to help organizations cut through the complexity -- selecting the right model (or combination) to build a compliant, scalable, and cost-effective workforce strategy.</p>
+        <div class="why-stats-grid">
+          <div class="why-stat-card">
+            <div class="why-stat-number">61+</div>
+            <div class="why-stat-label">Countries Served</div>
+          </div>
+          <div class="why-stat-card">
+            <div class="why-stat-number">99.7%</div>
+            <div class="why-stat-label">Compliance Rate</div>
+          </div>
+          <div class="why-stat-card">
+            <div class="why-stat-number">48hr</div>
+            <div class="why-stat-label">Average Onboarding</div>
+          </div>
+          <div class="why-stat-card">
+            <div class="why-stat-number">15K+</div>
+            <div class="why-stat-label">Workers Managed</div>
+          </div>
+        </div>
+      </div>
+      <div class="why-mbp-image-wrap reveal">
+        <div class="brand-shape s1"></div>
+        <div class="brand-shape s2"></div>
+        <div class="brand-shape s3"></div>
+        <div class="why-mbp-image">
+          <img src="/images/brand/why-mbp-new.jpg" alt="Why myBasePay" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     HOW IT WORKS
+     ============================================================ -->
+<section class="how-it-works" id="how-it-works">
+  <div class="container">
+    <div class="how-it-works-header reveal">
+      <div class="eyebrow">How It Works</div>
+      <h2 class="section-heading">Simple to Start. Powerful to Scale.</h2>
+      <p class="section-sub" style="margin: 0 auto;">Three steps to a fully managed workforce.</p>
+    </div>
+    <div class="steps-grid reveal-stagger">
+      <!-- Step 01 -->
+      <div class="step-card">
+        <div class="step-number">01</div>
+        <div class="step-icon">
+          <img src="/images/icons/icon-question.svg" alt="Tell Us" />
+        </div>
+        <h3>Tell Us Your Workforce Mix</h3>
+        <p>Share your current workforce structure -- how many W-2s, 1099s, vendors, and countries. We'll map the right combination of EOR, AOR, and VOR services to your needs.</p>
+      </div>
+      <!-- Step 02 -->
+      <div class="step-card">
+        <div class="step-number">02</div>
+        <div class="step-icon">
+          <img src="/images/icons/icon-clipboard.svg" alt="Complexity" />
+        </div>
+        <h3>We Handle the Complexity</h3>
+        <p>From onboarding and payroll to classification and compliance -- our team and platform take over the operational burden so your team can focus on strategic priorities.</p>
+      </div>
+      <!-- Step 03 -->
+      <div class="step-card">
+        <div class="step-number">03</div>
+        <div class="step-icon">
+          <img src="/images/icons/icon-payment.svg" alt="Scale" />
+        </div>
+        <h3>Scale with Confidence</h3>
+        <p>Add workers, enter new markets, and consolidate vendors -- all through a single platform with full visibility into spend, compliance, and workforce performance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TESTIMONIALS
+     ============================================================ -->
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <div class="testimonials-header reveal">
+      <div class="eyebrow">What Our Clients Say</div>
+      <h2 class="section-heading">Trusted by Industry Leaders</h2>
+    </div>
+    <div class="testimonial-toggle reveal">
+      <button class="testimonial-toggle-btn active" data-target="staffing">Staffing</button>
+      <button class="testimonial-toggle-btn" data-target="enterprise">Enterprise</button>
+    </div>
+    <!-- Staffing Testimonial -->
+    <div class="testimonial-card active" id="testimonial-staffing">
+      <p class="testimonial-quote">myBasePay transformed how we manage our contingent workforce. The compliance alone has saved us from costly misclassification risks.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-author-photo-wrap">
+          <div class="brand-shape" style="width: 28px; height: 22px; opacity: 0.4; top: -8px; right: -8px;"></div>
+          <img src="/images/brand/photo-4.jpg" alt="VP of Operations" class="testimonial-author-photo" />
+        </div>
+        <div>
+          <div class="testimonial-author-name">VP of Operations</div>
+          <div class="testimonial-author-title">National Staffing Agency</div>
+        </div>
+      </div>
+    </div>
+    <!-- Enterprise Testimonial -->
+    <div class="testimonial-card" id="testimonial-enterprise">
+      <p class="testimonial-quote">We consolidated three vendors into one platform. The visibility into spend and compliance has been a complete game-changer for our procurement team.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-author-photo-wrap">
+          <div class="brand-shape" style="width: 28px; height: 22px; opacity: 0.4; top: -8px; right: -8px;"></div>
+          <img src="/images/brand/testimonial-male.jpg" alt="Director of Procurement" class="testimonial-author-photo" />
+        </div>
+        <div>
+          <div class="testimonial-author-name">Director of Procurement</div>
+          <div class="testimonial-author-title">Fortune 500 Enterprise</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CALCULATORS
+     ============================================================ -->
+<section class="calculators" id="calculators">
+  <!-- Localised graph patch accent -->
+  <div class="graph-patch" style="width: 200px; height: 200px; bottom: 60px; right: 20px; opacity: 0.35;"></div>
+
+  <div class="container">
+    <div class="calculators-header reveal">
+      <div class="eyebrow">Free Tools</div>
+      <h2 class="section-heading">Calculate Your Risk. Quantify Your Savings.</h2>
+      <p class="section-sub" style="margin: 0 auto;">Use our free calculators to understand your exposure and potential savings.</p>
+    </div>
+    <div class="calculators-grid reveal-stagger">
+      <!-- EOR Calculator -->
+      <div class="calc-card">
+        <div class="calc-card-top">
+          <div class="calc-card-icon" style="background: rgba(115,147,249,0.10);">
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#7393f9" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 003 12c0-1.605.42-3.113 1.157-4.418"/></svg>
+          </div>
+          <div class="calc-card-badge eor">EOR</div>
+        </div>
+        <h3>Global Expansion Cost Calculator</h3>
+        <p>Estimate the true cost of expanding your workforce into new markets -- entity setup, payroll, benefits, and compliance included.</p>
+        <a href="#" class="calc-card-link">Calculate Now</a>
+      </div>
+      <!-- AOR Calculator -->
+      <div class="calc-card">
+        <div class="calc-card-top">
+          <div class="calc-card-icon" style="background: rgba(0,102,51,0.08);">
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#006633" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+          </div>
+          <div class="calc-card-badge aor">AOR</div>
+        </div>
+        <h3>Misclassification Risk Calculator</h3>
+        <p>Quantify your exposure to worker misclassification penalties, back taxes, and legal liability across your contractor workforce.</p>
+        <a href="#" class="calc-card-link">Calculate Now</a>
+      </div>
+      <!-- VOR Calculator -->
+      <div class="calc-card">
+        <div class="calc-card-top">
+          <div class="calc-card-icon" style="background: rgba(255,191,0,0.10);">
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#b38600" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div class="calc-card-badge vor">VOR</div>
+        </div>
+        <h3>Contingent Spend Optimizer</h3>
+        <p>See how much you could save by consolidating staffing vendors and implementing rate card standardization across your programs.</p>
+        <a href="#" class="calc-card-link">Calculate Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PODCAST
+     ============================================================ -->
+<section class="podcast" id="podcast">
+  <div class="container">
+    <div class="podcast-inner">
+      <div class="podcast-content reveal">
+        <div class="eyebrow">Leaders Unfiltered</div>
+        <h2 class="section-heading">Real Conversations with Workforce Leaders</h2>
+        <p class="section-sub">Candid conversations with the people shaping the future of work. Compliance, strategy, innovation -- no filter.</p>
+        <div class="podcast-episodes">
+          <div class="podcast-episode">
+            <div class="podcast-episode-play"><svg viewBox="0 0 24 24" fill="rgba(18,22,49,0.4)"><path d="M8 5.14v14l11-7-11-7z"/></svg></div>
+            <div class="podcast-episode-title">The Future of Contingent Workforce Management</div>
+          </div>
+          <div class="podcast-episode">
+            <div class="podcast-episode-play"><svg viewBox="0 0 24 24" fill="rgba(18,22,49,0.4)"><path d="M8 5.14v14l11-7-11-7z"/></svg></div>
+            <div class="podcast-episode-title">Navigating Worker Classification in 2025</div>
+          </div>
+          <div class="podcast-episode">
+            <div class="podcast-episode-play"><svg viewBox="0 0 24 24" fill="rgba(18,22,49,0.4)"><path d="M8 5.14v14l11-7-11-7z"/></svg></div>
+            <div class="podcast-episode-title">Building a Resilient Workforce Strategy</div>
+          </div>
+        </div>
+        <a href="#" class="btn btn-outline">Listen Now</a>
+      </div>
+      <div class="podcast-image-wrap reveal">
+        <div class="brand-shape s1"></div>
+        <div class="brand-shape s2"></div>
+        <div class="podcast-image">
+          <img src="/images/brand/podcast-new.jpg" alt="Leaders Unfiltered Podcast" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA SECTION
+     ============================================================ -->
+<section class="cta-section">
+  <div class="container reveal">
+    <h2 class="section-heading">Ready to Simplify Your Workforce?</h2>
+    <p class="section-sub">See how myBasePay helps you hire compliantly, reduce costs, and scale with confidence.</p>
+    <a href="/demo/" class="btn btn-marigold" style="font-size: 1.0625rem; padding: 16px 40px;">Schedule a Demo</a>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="/images/brand/logo-white.svg" alt="myBasePay" />
+        <p class="footer-tagline">Architects of the Flexible Workforce</p>
+      </div>
+      <div class="footer-col">
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="/solutions/eor/">Employer of Record</a></li>
+          <li><a href="/solutions/aor/">Agent of Record</a></li>
+          <li><a href="/solutions/vor/">Vendor of Record</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about/">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Tools</h4>
+        <ul>
+          <li><a href="/calculators/misclassification-risk/">Misclassification Calculator</a></li>
+          <li><a href="/calculators/global-expansion/">Expansion Calculator</a></li>
+          <li><a href="/calculators/spend-optimizer/">Spend Optimizer</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/podcast/">Podcast</a></li>
+          <li><a href="/news/">News &amp; Press</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; 2026 myBasePay. All rights reserved.</div>
+      <div class="footer-legal-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+(function() {
+  'use strict';
+
+  /* ----------------------------------------------------------
+     CURSOR-FOLLOW ORB (subtle, brand colors, hero only)
+     ---------------------------------------------------------- */
+  var orb = document.getElementById('heroOrb');
+  var heroSection = document.getElementById('heroSection');
+  var orbX = 0, orbY = 0;
+  var mouseX = 0, mouseY = 0;
+  var orbVisible = false;
+
+  function animateOrb() {
+    orbX += (mouseX - orbX) * 0.06;
+    orbY += (mouseY - orbY) * 0.06;
+    if (orb) {
+      orb.style.transform = 'translate(' + (orbX - 110) + 'px, ' + (orbY - 110) + 'px)';
+    }
+    requestAnimationFrame(animateOrb);
+  }
+
+  function isInsideHero(y) {
+    if (!heroSection) return false;
+    var rect = heroSection.getBoundingClientRect();
+    return y >= rect.top && y <= rect.bottom;
+  }
+
+  document.addEventListener('mousemove', function(e) {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    if (isInsideHero(e.clientY)) {
+      if (!orbVisible && orb) {
+        orbVisible = true;
+        orbX = mouseX;
+        orbY = mouseY;
+      }
+      if (orb) orb.style.opacity = '0.25';
+    } else {
+      if (orb) orb.style.opacity = '0';
+      orbVisible = false;
+    }
+  });
+
+  if (orb) {
+    animateOrb();
+  }
+
+  document.addEventListener('mouseleave', function() {
+    if (orb) orb.style.opacity = '0';
+    orbVisible = false;
+  });
+
+  /* ----------------------------------------------------------
+     HEADER SCROLL SHADOW
+     ---------------------------------------------------------- */
+  var header = document.getElementById('siteHeader');
+  var scrollTicking = false;
+
+  window.addEventListener('scroll', function() {
+    if (!scrollTicking) {
+      requestAnimationFrame(function() {
+        if (header) {
+          if (window.scrollY > 20) {
+            header.classList.add('scrolled');
+          } else {
+            header.classList.remove('scrolled');
+          }
+        }
+        scrollTicking = false;
+      });
+      scrollTicking = true;
+    }
+  });
+
+  /* ----------------------------------------------------------
+     TESTIMONIAL TOGGLE
+     ---------------------------------------------------------- */
+  var toggleBtns = document.querySelectorAll('.testimonial-toggle-btn');
+  var staffingCard = document.getElementById('testimonial-staffing');
+  var enterpriseCard = document.getElementById('testimonial-enterprise');
+
+  toggleBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var target = this.getAttribute('data-target');
+
+      toggleBtns.forEach(function(b) { b.classList.remove('active'); });
+      this.classList.add('active');
+
+      if (target === 'staffing') {
+        staffingCard.classList.add('active');
+        enterpriseCard.classList.remove('active');
+      } else {
+        enterpriseCard.classList.add('active');
+        staffingCard.classList.remove('active');
+      }
+    });
+  });
+
+  /* ----------------------------------------------------------
+     MOBILE MENU TOGGLE
+     ---------------------------------------------------------- */
+  var menuBtn = document.getElementById('mobileMenuBtn');
+  var mobileNav = document.getElementById('mobileNavOverlay');
+
+  if (menuBtn && mobileNav) {
+    menuBtn.addEventListener('click', function() {
+      menuBtn.classList.toggle('active');
+      mobileNav.classList.toggle('open');
+      document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+    });
+
+    mobileNav.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        menuBtn.classList.remove('active');
+        mobileNav.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+
+  /* ----------------------------------------------------------
+     SCROLL REVEAL (IntersectionObserver)
+     ---------------------------------------------------------- */
+  var revealElements = document.querySelectorAll('.reveal, .reveal-stagger');
+
+  if ('IntersectionObserver' in window) {
+    var revealObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealElements.forEach(function(el) {
+      revealObserver.observe(el);
+    });
+  } else {
+    // Fallback: show all
+    revealElements.forEach(function(el) {
+      el.classList.add('visible');
+    });
+  }
+
+})();
+</script>
+
+<script>
+// Block all outbound navigation - homepage only mode
+document.addEventListener('click', function(e) {
+  var link = e.target.closest('a');
+  if (!link) return;
+  var href = link.getAttribute('href');
+  if (!href) return;
+  if (href.charAt(0) === '#' || href.startsWith('javascript:')) return;
+  e.preventDefault();
+});
+</script>
+
+</body>
+</html>
